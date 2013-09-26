@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ModuleManager">
+    <modules>
+      <module name="consulo-xslt-debugger" dirurl="file://$PROJECT_DIR$">
+        <extension id="java" sdk-module-name="" sdk-name="1.6" language-level-module-name="" language-level-name="JDK_1_6" special-dir-location="SOURCE_DIR" />
+        <extension id="consulo-plugin" sdk-module-name="" sdk-name="Consulo 1.SNAPSHOT" />
+        <content url="file://$MODULE_DIR$">
+          <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/src" />
+        </content>
+        <orderEntry type="module-extension-sdk" extension-id="java" />
+        <orderEntry type="module-extension-sdk" extension-id="consulo-plugin" />
+        <orderEntry type="sourceFolder" forTests="false" />
+        <orderEntry type="module-library">
+          <library name="consulo:XPathView + XSLT Support">
+            <CLASSES>
+              <root url="jar://$APPLICATION_HOME_DIR$/plugins/xpath/lib/xpath-intellilang.jar!/" />
+              <root url="jar://$APPLICATION_HOME_DIR$/plugins/xpath/lib/xpath.jar!/" />
+              <root url="jar://$APPLICATION_HOME_DIR$/plugins/xpath/lib/xslt-rt.jar!/" />
+            </CLASSES>
+            <DOCUMENTATION />
+            <SOURCES />
+          </library>
+        </orderEntry>
+        <orderEntry type="module-library">
+          <library name="consulo:XML">
+            <CLASSES>
+              <root url="jar://$APPLICATION_HOME_DIR$/plugins/xml/lib/xml-copyright.jar!/" />
+              <root url="jar://$APPLICATION_HOME_DIR$/plugins/xml/lib/xml-dom.jar!/" />
+              <root url="jar://$APPLICATION_HOME_DIR$/plugins/xml/lib/xml-intellilang.jar!/" />
+              <root url="jar://$APPLICATION_HOME_DIR$/plugins/xml/lib/xml.jar!/" />
+            </CLASSES>
+            <DOCUMENTATION />
+            <SOURCES />
+          </library>
+        </orderEntry>
+        <orderEntry type="module" module-name="engine" />
+      </module>
+      <module name="engine" dirurl="file://$PROJECT_DIR$/engine">
+        <extension id="java" sdk-module-name="" sdk-name="1.6" language-level-module-name="" language-level-name="JDK_1_6" special-dir-location="SOURCE_DIR" />
+        <extension id="consulo-plugin" sdk-module-name="" sdk-name="Consulo 1.SNAPSHOT" />
+        <content url="file://$MODULE_DIR$">
+          <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/src" />
+        </content>
+        <orderEntry type="module-extension-sdk" extension-id="java" />
+        <orderEntry type="module-extension-sdk" extension-id="consulo-plugin" />
+        <orderEntry type="sourceFolder" forTests="false" />
+        <orderEntry type="module-library">
+          <library>
+            <CLASSES>
+              <root url="jar://$MODULE_DIR$/lib/rmi-stubs.jar!/" />
+            </CLASSES>
+            <DOCUMENTATION />
+            <SOURCES />
+          </library>
+        </orderEntry>
+      </module>
+      <module name="impl" dirurl="file://$PROJECT_DIR$/engine/impl">
+        <extension id="java" sdk-module-name="" sdk-name="1.6" language-level-module-name="" language-level-name="JDK_1_6" special-dir-location="SOURCE_DIR" />
+        <extension id="consulo-plugin" sdk-module-name="" sdk-name="Consulo 1.SNAPSHOT" />
+        <content url="file://$MODULE_DIR$">
+          <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/src" />
+        </content>
+        <orderEntry type="module-extension-sdk" extension-id="java" />
+        <orderEntry type="module-extension-sdk" extension-id="consulo-plugin" />
+        <orderEntry type="sourceFolder" forTests="false" />
+        <orderEntry type="module-library">
+          <library>
+            <CLASSES>
+              <root url="jar://$MODULE_DIR$/lib/xalan.jar!/" />
+            </CLASSES>
+            <DOCUMENTATION />
+            <SOURCES />
+          </library>
+        </orderEntry>
+        <orderEntry type="module-library">
+          <library>
+            <CLASSES>
+              <root url="jar://$MODULE_DIR$/lib/rmi-stubs.jar!/" />
+            </CLASSES>
+            <DOCUMENTATION />
+            <SOURCES />
+          </library>
+        </orderEntry>
+        <orderEntry type="module-library">
+          <library>
+            <CLASSES>
+              <root url="jar://$MODULE_DIR$/lib/saxon.jar!/" />
+            </CLASSES>
+            <DOCUMENTATION />
+            <SOURCES />
+          </library>
+        </orderEntry>
+        <orderEntry type="module-library">
+          <library>
+            <CLASSES>
+              <root url="jar://$MODULE_DIR$/lib/serializer.jar!/" />
+            </CLASSES>
+            <DOCUMENTATION />
+            <SOURCES />
+          </library>
+        </orderEntry>
+        <orderEntry type="module-library">
+          <library>
+            <CLASSES>
+              <root url="jar://$MODULE_DIR$/lib/saxon9he.jar!/" />
+            </CLASSES>
+            <DOCUMENTATION />
+            <SOURCES />
+          </library>
+        </orderEntry>
+        <orderEntry type="module" module-name="engine" />
+        <orderEntry type="module-library">
+          <library name="consulo:XPathView + XSLT Support">
+            <CLASSES>
+              <root url="jar://$APPLICATION_HOME_DIR$/plugins/xpath/lib/xpath-intellilang.jar!/" />
+              <root url="jar://$APPLICATION_HOME_DIR$/plugins/xpath/lib/xpath.jar!/" />
+              <root url="jar://$APPLICATION_HOME_DIR$/plugins/xpath/lib/xslt-rt.jar!/" />
+            </CLASSES>
+            <DOCUMENTATION />
+            <SOURCES />
+          </library>
+        </orderEntry>
+      </module>
+    </modules>
+  </component>
+</project>
+
