@@ -1,10 +1,16 @@
 package org.intellij.plugins.xsltDebugger;
 
+import javax.swing.Icon;
+
+import org.intellij.lang.xpath.xslt.XsltSupport;
+import org.intellij.lang.xpath.xslt.impl.XsltChecker;
+import org.intellij.plugins.xsltDebugger.impl.XsltDebuggerEditorsProvider;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.icons.AllIcons;
+import com.intellij.ide.highlighter.XmlFileType;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.fileTypes.StdFileTypes;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDocumentManager;
@@ -15,12 +21,6 @@ import com.intellij.xdebugger.breakpoints.XBreakpointProperties;
 import com.intellij.xdebugger.breakpoints.XLineBreakpoint;
 import com.intellij.xdebugger.breakpoints.XLineBreakpointType;
 import com.intellij.xdebugger.evaluation.XDebuggerEditorsProvider;
-import org.intellij.lang.xpath.xslt.XsltSupport;
-import org.intellij.lang.xpath.xslt.impl.XsltChecker;
-import org.intellij.plugins.xsltDebugger.impl.XsltDebuggerEditorsProvider;
-import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
 
 /*
 * Created by IntelliJ IDEA.
@@ -46,7 +46,7 @@ public class XsltBreakpointType extends XLineBreakpointType<XBreakpointPropertie
       return false;
     }
     final FileType fileType = psiFile.getFileType();
-    if (fileType != StdFileTypes.XML || !XsltSupport.isXsltFile(psiFile)) {
+    if (fileType != XmlFileType.INSTANCE || !XsltSupport.isXsltFile(psiFile)) {
       return false;
     }
     return true;
