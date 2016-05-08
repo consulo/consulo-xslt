@@ -21,6 +21,9 @@
             <element id="file-copy" path="$PROJECT_DIR$/engine/impl/lib/xalan.jar" />
           </element>
           <element id="file-copy" path="$PROJECT_DIR$/engine/lib/rmi-stubs.jar" />
+          <element id="zip-archive" name="xslt-rt.jar">
+            <element id="module-output" name="xslt-rt" />
+          </element>
         </element>
       </element>
     </root>
