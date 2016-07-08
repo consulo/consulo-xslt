@@ -2,7 +2,6 @@ package org.intellij.plugins.xsltDebugger;
 
 import javax.swing.Icon;
 
-import org.consulo.lombok.annotations.LazyInstance;
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.impl.XsltChecker;
 import org.intellij.plugins.xsltDebugger.impl.XsltDebuggerEditorsProvider;
@@ -17,6 +16,7 @@ import com.intellij.xdebugger.breakpoints.XBreakpointProperties;
 import com.intellij.xdebugger.breakpoints.XLineBreakpoint;
 import com.intellij.xdebugger.breakpoints.XLineBreakpointType;
 import com.intellij.xdebugger.evaluation.XDebuggerEditorsProvider;
+import consulo.lombok.annotations.Lazy;
 
 /*
 * Created by IntelliJ IDEA.
@@ -26,7 +26,7 @@ import com.intellij.xdebugger.evaluation.XDebuggerEditorsProvider;
 public class XsltBreakpointType extends XLineBreakpointType<XBreakpointProperties>
 {
 	@NotNull
-	@LazyInstance
+	@Lazy
 	public static XsltBreakpointType getInstance()
 	{
 		return EXTENSION_POINT_NAME.findExtension(XsltBreakpointType.class);
