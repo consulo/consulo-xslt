@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="consulo-plugin: com.intellij.xpath">
+    <binaries>
+      <root url="jar://$PROJECT_DIR$/dep/com.intellij.xpath/lib/xpath.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dep/com.intellij.xpath/lib/xpath-view.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dep/com.intellij.xpath/lib/xpath-intelliLang.jar!/" />
+    </binaries>
+  </library>
+</component>

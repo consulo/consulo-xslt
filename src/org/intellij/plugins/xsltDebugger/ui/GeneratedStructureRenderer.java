@@ -20,7 +20,7 @@ import com.intellij.icons.AllIcons;
 import com.intellij.ui.ColoredTreeCellRenderer;
 import com.intellij.ui.SimpleTextAttributes;
 import com.intellij.util.PlatformIcons;
-import icons.XsltDebuggerIcons;
+import icons.XsltIcons;
 import org.intellij.plugins.xsltDebugger.rt.engine.OutputEventQueue;
 
 import javax.swing.*;
@@ -73,7 +73,7 @@ class GeneratedStructureRenderer extends ColoredTreeCellRenderer {
           append(clipValue(event.getValue()), SimpleTextAttributes.REGULAR_ATTRIBUTES);
           break;
         case OutputEventQueue.COMMENT:
-          setIcon(XsltDebuggerIcons.XmlComment);
+          setIcon(XsltIcons.XmlComment);
           append("#comment ", SimpleTextAttributes.GRAYED_ATTRIBUTES);
           append(event.getValue(), SimpleTextAttributes.REGULAR_ATTRIBUTES);
           break;

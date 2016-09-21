@@ -1,28 +1,135 @@
 <idea-plugin>
-	<id>XSLT-Debugger</id>
-	<name>XSLT-Debugger</name>
-	<description><![CDATA[Interactive XSLT Debugger. Allows debugging of XSLT stylesheets]]></description>
+	<id>consulo.xslt</id>
+	<name>XSLT</name>
+	<description>XSLT support with debugging</description>
 
 	<version>SNAPSHOT</version>
 	<vendor email="sascha.weinreuter@cit.de">Sascha Weinreuter</vendor>
 
-	<depends>XPathView</depends>
+	<depends>com.intellij.xpath</depends>
 	<depends>com.intellij.xml</depends>
 
-	<change-notes>
-		Xalan Support. To debug with Xalan instead of SAXON, a supported Xalan version (2.7.x) should be present in the
-		classpath or "-Dxslt.transformer.type=xalan" should be added as VM argument for the run configuration. Debugging
-		with SAXON can be forced by adding "-Dxslt.transformer.type=saxon".
-	</change-notes>
+	<actions>
+		<group id="XPathView.XSLT.Associations" popup="true"
+			   class="org.intellij.lang.xpath.xslt.associations.impl.AssociationsGroup" text="File Associations">
+			<add-to-group group-id="XPathView.EditorPopup" anchor="last"
+						  relative-to-action="XPathView.Actions.ShowPathDescription"/>
+			<add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="AddAntBuildFile"/>
+		</group>
+	</actions>
 
-	<extensions defaultExtensionNs="com.intellij">
-		<xdebugger.breakpointType implementation="org.intellij.plugins.xsltDebugger.XsltBreakpointType"/>
-		<xdebugger.lineBreakpointTypeResolver filetype="XML" implementationClass="consulo.xslt.debugger.breakpoint.XsltBreakpointTypeResolver" />
+	<application-components>
+		<component>
+			<interface-class>org.intellij.lang.xpath.xslt.XsltConfig</interface-class>
+			<implementation-class>org.intellij.lang.xpath.xslt.impl.XsltConfigImpl</implementation-class>
+		</component>
+	</application-components>
 
-		<programRunner implementation="org.intellij.plugins.xsltDebugger.XsltDebuggerRunner"/>
+	<project-components>
+		<component>
+			<interface-class>org.intellij.lang.xpath.xslt.associations.FileAssociationsManager</interface-class>
+			<implementation-class>org.intellij.lang.xpath.xslt.associations.impl.FileAssociationsManagerImpl</implementation-class>
+		</component>
+	</project-components>
+
+	<extensionPoints>
+		<extensionPoint name="xsltRunnerExtension" interface="org.intellij.lang.xpath.xslt.run.XsltRunnerExtension"/>
+	</extensionPoints>
+
+	<extensions defaultExtensionNs="com.intellij.xpath">
+		<contextProviderExtension implementation="org.intellij.lang.xpath.xslt.context.Xslt1ContextProviderExtension"/>
+		<contextProviderExtension implementation="org.intellij.lang.xpath.xslt.context.Xslt2ContextProviderExtension"/>
+
+		<namespaceContextProvider implementation="consulo.xslt.xpath.context.XsltNamespaceContextProvider" />
 	</extensions>
 
-	<extensions defaultExtensionNs="XPathView">
+	<extensions defaultExtensionNs="com.intellij.xml">
+		<standardResourceProvider implementation="org.intellij.lang.xpath.xslt.impl.XsltResourceProvider"/>
+	</extensions>
+
+	<extensions defaultExtensionNs="consulo.xslt">
 		<xsltRunnerExtension implementation="org.intellij.plugins.xsltDebugger.XsltDebuggerExtension"/>
+	</extensions>
+
+	<extensions defaultExtensionNs="com.intellij">
+		<applicationService
+				serviceInterface="org.intellij.lang.xpath.xslt.psi.XsltElementFactory"
+				serviceImplementation="org.intellij.lang.xpath.xslt.psi.impl.XsltElementFactoryImpl"/>
+
+		<projectService
+				serviceInterface="org.intellij.lang.xpath.xslt.associations.impl.FileAssociationsConfigurable$UIState"
+				serviceImplementation="org.intellij.lang.xpath.xslt.associations.impl.FileAssociationsConfigurable$UIState"/>
+
+		<implicitUsageProvider implementation="org.intellij.lang.xpath.xslt.impl.XsltImplicitUsagesProvider"/>
+
+		<renameInputValidator implementation="org.intellij.lang.xpath.xslt.impl.XsltRenameInputValidator"/>
+		<applicationConfigurable instance="org.intellij.lang.xpath.xslt.impl.XsltConfigImpl$UIImpl" id="settings.xslt"
+								 displayName="XSLT"/>
+
+		<iconDescriptorUpdater implementation="org.intellij.lang.xpath.xslt.impl.XsltIconDescriptorUpdater"/>
+		<gotoSymbolContributor implementation="org.intellij.lang.xpath.xslt.impl.XsltChooseByNameContributor"/>
+		<annotator language="XML" implementationClass="org.intellij.lang.xpath.xslt.validation.XsltXmlAnnotator"/>
+
+		<lang.documentationProvider language="XML" implementationClass="org.intellij.lang.xpath.xslt.impl.XsltDocumentationProvider"/>
+
+		<configurationType implementation="org.intellij.lang.xpath.xslt.run.XsltRunConfigType"/>
+		<programRunner implementation="org.intellij.lang.xpath.xslt.run.XsltRunner"/>
+		<configurationProducer implementation="org.intellij.lang.xpath.xslt.run.XsltConfigurationProducer"/>
+
+		<fileBasedIndex implementation="org.intellij.lang.xpath.xslt.impl.XsltSymbolIndex"/>
+		<include.provider implementation="org.intellij.lang.xpath.xslt.impl.XsltIncludeProvider"/>
+
+		<usageGroupingRuleProvider implementation="org.intellij.lang.xpath.xslt.impl.XsltStuffProvider"/>
+		<lang.refactoringSupport language="XML" implementationClass="org.intellij.lang.xpath.xslt.refactoring.XsltRefactoringSupportProvider"/>
+		<lang.refactoringSupport language="XPath" implementationClass="org.intellij.lang.xpath.xslt.refactoring.XPathRefactoringSupportProvider"/>
+		<inlineActionHandler implementation="org.intellij.lang.xpath.xslt.refactoring.VariableInlineHandler"/>
+
+		<projectConfigurable instance="org.intellij.lang.xpath.xslt.associations.impl.FileAssociationsConfigurable" id="xslt.associations" displayName="XSLT File Associations"
+							 nonDefaultProject="true"/>
+
+		<xdebugger.breakpointType implementation="org.intellij.plugins.xsltDebugger.XsltBreakpointType"/>
+		<xdebugger.lineBreakpointTypeResolver filetype="XML" implementationClass="consulo.xslt.debugger.breakpoint.XsltBreakpointTypeResolver"/>
+
+		<programRunner implementation="org.intellij.plugins.xsltDebugger.XsltDebuggerRunner"/>
+
+		<localInspection shortName="XsltUnusedDeclaration" displayName="Unused Variable/Parameter" groupName="XSLT" enabledByDefault="true"
+						 level="WARNING" implementationClass="org.intellij.lang.xpath.xslt.validation.inspections.UnusedElementInspection"/>
+		<localInspection shortName="XsltTemplateInvocation" displayName="Template Invocation Problems" groupName="XSLT" enabledByDefault="true"
+						 level="ERROR" implementationClass="org.intellij.lang.xpath.xslt.validation.inspections.TemplateInvocationInspection"/>
+		<localInspection shortName="XsltDeclarations" displayName="Declaration Problems" groupName="XSLT" enabledByDefault="true" level="ERROR"
+						 implementationClass="org.intellij.lang.xpath.xslt.validation.inspections.XsltDeclarationInspection"/>
+		<localInspection shortName="XsltVariableShadowing" displayName="Variable Shadowing" groupName="XSLT" enabledByDefault="true"
+						 level="WARNING" implementationClass="org.intellij.lang.xpath.xslt.validation.inspections.VariableShadowingInspection"/>
+		<annotator language="XPath" implementationClass="org.intellij.lang.xpath.xslt.validation.XsltAnnotator"/>
+		<lang.documentationProvider language="XPath" implementationClass="org.intellij.lang.xpath.xslt.impl.XsltDocumentationProvider"/>
+
+		<!--
+		<daemon.changeLocalityDetector implementation="org.intellij.lang.xpath.xslt.impl.XsltChangeLocalityDetector" />
+		-->
+		<multiHostInjector forClass="com.intellij.psi.xml.XmlAttribute"
+						   implementationClass="org.intellij.lang.xpath.xslt.impl.XPathLanguageInjector"/>
+
+		<treeStructureProvider implementation="org.intellij.lang.xpath.xslt.impl.XsltTreeStructureProvider"/>
+
+		<psi.referenceContributor language="XML" implementation="org.intellij.lang.xpath.xslt.impl.XsltReferenceContributor$XML"/>
+		<psi.referenceContributor language="XPath" implementation="org.intellij.lang.xpath.xslt.impl.XsltReferenceContributor$XPath"/>
+
+
+		<intentionAction>
+			<className>org.intellij.lang.xpath.xslt.intentions.AddOptionalArgumentsIntention</className>
+			<category>XSLT</category>
+		</intentionAction>
+		<intentionAction>
+			<className>org.intellij.lang.xpath.xslt.intentions.ConvertIfToChooseIntention</className>
+			<category>XSLT</category>
+		</intentionAction>
+		<intentionAction>
+			<className>org.intellij.lang.xpath.xslt.intentions.ReplaceWithXslAttribute</className>
+			<category>XSLT</category>
+		</intentionAction>
+		<intentionAction>
+			<className>org.intellij.lang.xpath.xslt.intentions.InlineXslAttribute</className>
+			<category>XSLT</category>
+		</intentionAction>
 	</extensions>
 </idea-plugin>

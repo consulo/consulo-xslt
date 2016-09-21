@@ -2,10 +2,11 @@
   <artifact build-on-make="true" name="dist">
     <output-path>$PROJECT_DIR$/out/artifacts/dist</output-path>
     <root id="root">
-      <element id="directory" name="xslt-debugger">
+      <element id="directory" name="consulo.xslt">
         <element id="directory" name="lib">
-          <element id="zip-archive" name="xslt-debugger.jar">
-            <element id="module-output" name="consulo-xslt-debugger" />
+          <element id="zip-archive" name="xslt.jar">
+            <element id="module-output" name="consulo-xslt" />
+            <element id="module-production-resource-output" name="consulo-xslt" />
           </element>
           <element id="zip-archive" name="xslt-debugger-engine.jar">
             <element id="module-output" name="engine" />

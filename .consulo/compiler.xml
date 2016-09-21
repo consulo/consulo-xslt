@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="CompilerConfiguration" url="file://$PROJECT_DIR$/out" />
   <component name="CompilerPathsManager" url="file://$PROJECT_DIR$/out" />
   <component name="JavaCompilerConfiguration" compiler="JavacCompiler" add-not-null-assertions="true">
     <annotation-processing>
@@ -7,7 +8,7 @@
         <processorPath useClasspath="true" />
       </profile>
     </annotation-processing>
-    <bytecode-target-level target="1.6" />
+    <bytecode-target-level target="1.8" />
   </component>
   <component name="JavacCompilerConfiguration">
     <option name="MAXIMUM_HEAP_SIZE" value="512" />
