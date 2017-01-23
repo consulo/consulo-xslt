@@ -4,8 +4,8 @@
     <modules>
       <module name="engine" dirurl="file://$PROJECT_DIR$/engine" current-layer="Default">
         <module-layer name="Default">
-          <extension id="consulo-plugin" sdk-module-name="consulo-xslt" sdk-name="" />
-          <extension id="java" sdk-module-name="consulo-xslt" sdk-name="" language-level-module-name="consulo-xslt" language-level-name="" special-dir-location="SOURCE_DIR" bytecode-version="1.8" />
+          <extension id="consulo-plugin" sdk-module-name="consulo-xslt" />
+          <extension id="java" sdk-module-name="consulo-xslt" language-level-module-name="consulo-xslt" bytecode-version="1.8" />
           <content url="file://$MODULE_DIR$">
             <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/src" />
           </content>
@@ -23,8 +23,8 @@
       </module>
       <module name="impl" dirurl="file://$PROJECT_DIR$/engine/impl" current-layer="Default">
         <module-layer name="Default">
-          <extension id="consulo-plugin" sdk-module-name="consulo-xslt" sdk-name="" />
-          <extension id="java" sdk-module-name="consulo-xslt" sdk-name="" language-level-module-name="consulo-xslt" language-level-name="" special-dir-location="SOURCE_DIR" bytecode-version="1.8" />
+          <extension id="consulo-plugin" sdk-module-name="consulo-xslt" />
+          <extension id="java" sdk-module-name="consulo-xslt" language-level-module-name="consulo-xslt" bytecode-version="1.8" />
           <content url="file://$MODULE_DIR$">
             <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/src" />
           </content>
@@ -72,7 +72,7 @@
       </module>
       <module name="xslt-rt" dirurl="file://$PROJECT_DIR$/xslt-rt" current-layer="Default">
         <module-layer name="Default">
-          <extension id="java" sdk-module-name="consulo-xslt" sdk-name="" language-level-module-name="" language-level-name="JDK_1_6" special-dir-location="SOURCE_DIR" bytecode-version="1.6" />
+          <extension id="java" sdk-module-name="consulo-xslt" language-level-name="JDK_1_6" bytecode-version="1.6" />
           <content url="file://$MODULE_DIR$">
             <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/src" />
           </content>
@@ -82,8 +82,8 @@
       </module>
       <module name="consulo-xslt" dirurl="file://$PROJECT_DIR$" current-layer="Default">
         <module-layer name="Default">
-          <extension id="consulo-plugin" sdk-module-name="" sdk-name="Consulo SNAPSHOT" />
-          <extension id="java" sdk-module-name="" sdk-name="1.8" language-level-module-name="" language-level-name="JDK_1_8" special-dir-location="SOURCE_DIR" bytecode-version="1.8" />
+          <extension id="consulo-plugin" sdk-name="Consulo SNAPSHOT" />
+          <extension id="java" sdk-name="1.8" language-level-name="JDK_1_8" bytecode-version="1.8" />
           <content url="file://$MODULE_DIR$">
             <content-folder type="PRODUCTION_RESOURCE" url="file://$MODULE_DIR$/resources" />
             <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/src" />

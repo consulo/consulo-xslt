@@ -16,7 +16,6 @@ import com.intellij.xdebugger.breakpoints.XBreakpointProperties;
 import com.intellij.xdebugger.breakpoints.XLineBreakpoint;
 import com.intellij.xdebugger.breakpoints.XLineBreakpointType;
 import com.intellij.xdebugger.evaluation.XDebuggerEditorsProvider;
-import consulo.lombok.annotations.Lazy;
 
 /*
 * Created by IntelliJ IDEA.
@@ -26,7 +25,6 @@ import consulo.lombok.annotations.Lazy;
 public class XsltBreakpointType extends XLineBreakpointType<XBreakpointProperties>
 {
 	@NotNull
-	@Lazy
 	public static XsltBreakpointType getInstance()
 	{
 		return EXTENSION_POINT_NAME.findExtension(XsltBreakpointType.class);
