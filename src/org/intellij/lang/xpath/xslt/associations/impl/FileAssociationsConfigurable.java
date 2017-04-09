@@ -100,7 +100,7 @@ public class FileAssociationsConfigurable implements SearchableConfigurable, Non
         private TreeState state;
 
         public TreeState getState() {
-            return state != null ? state : new TreeState();
+            return state != null ? state : TreeState.createFrom(null);
         }
 
         public void loadState(TreeState state) {
