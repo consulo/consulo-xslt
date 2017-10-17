@@ -25,10 +25,10 @@ class ConfigureAssociationsAction extends AnAction {
     }
 
     public void actionPerformed(final AnActionEvent e) {
-        final Project project = CommonDataKeys.PROJECT.getData(e.getDataContext());
+        final Project project = e.getProject();
         if (project == null) return;
 
-        final PsiFile file = LangDataKeys.PSI_FILE.getData(e.getDataContext());
+        final PsiFile file = e.getData(LangDataKeys.PSI_FILE);
         FileAssociationsConfigurable.editAssociations(project, file);
     }
 }

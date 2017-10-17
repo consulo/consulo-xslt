@@ -15,6 +15,14 @@
  */
 package org.intellij.lang.xpath.xslt.run;
 
+import java.awt.BorderLayout;
+import java.awt.Container;
+
+import javax.swing.JComponent;
+import javax.swing.JTabbedPane;
+
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.diagnostic.logging.AdditionalTabComponent;
 import com.intellij.execution.filters.TextConsoleBuilderFactory;
 import com.intellij.execution.ui.ConsoleView;
@@ -28,11 +36,7 @@ import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.fileTypes.FileTypeEditorHighlighterProviders;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
-import java.awt.*;
+import com.intellij.openapi.util.Key;
 
 public class HighlightingOutputConsole extends AdditionalTabComponent implements DataProvider {
     public static final String TAB_TITLE = "XSLT Output";
@@ -84,7 +88,7 @@ public class HighlightingOutputConsole extends AdditionalTabComponent implements
 
     @Nullable
     private EditorEx getEditor() {
-        return (EditorEx)((DataProvider)myConsole).getData(LangDataKeys.EDITOR.getName());
+        return (EditorEx)((DataProvider)myConsole).getData(LangDataKeys.EDITOR);
     }
 
     public JComponent getPreferredFocusableComponent() {
@@ -92,8 +96,8 @@ public class HighlightingOutputConsole extends AdditionalTabComponent implements
     }
 
     @Nullable
-    public Object getData(@NonNls String dataId) {
-        if (LangDataKeys.EDITOR.is(dataId)) {
+    public Object getData(@NonNls Key<?> dataId) {
+        if (LangDataKeys.EDITOR == dataId) {
             return getEditor();
         }
         return null;

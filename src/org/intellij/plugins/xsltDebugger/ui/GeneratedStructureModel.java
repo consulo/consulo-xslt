@@ -16,6 +16,21 @@
 
 package org.intellij.plugins.xsltDebugger.ui;
 
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.swing.SwingUtilities;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
+
+import org.intellij.plugins.xsltDebugger.XsltDebuggerSession;
+import org.intellij.plugins.xsltDebugger.rt.engine.OutputEventQueue;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.ide.DataManager;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.application.ApplicationManager;
@@ -23,20 +38,6 @@ import com.intellij.openapi.project.Project;
 import com.intellij.pom.Navigatable;
 import com.intellij.util.SmartList;
 import com.intellij.util.containers.StringInterner;
-import org.intellij.plugins.xsltDebugger.XsltDebuggerSession;
-import org.intellij.plugins.xsltDebugger.rt.engine.OutputEventQueue;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeNode;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -307,7 +308,7 @@ public class GeneratedStructureModel extends DefaultTreeModel {
 
     public void navigate(boolean requestFocus) {
       final OutputEventQueue.NodeEvent event = getUserObject();
-      final Project project = (Project)DataManager.getInstance().getDataContext().getData(PlatformDataKeys.PROJECT.getName());
+      final Project project = DataManager.getInstance().getDataContext().getData(PlatformDataKeys.PROJECT);
       XsltDebuggerSession.openLocation(project, event.getURI(), event.getLineNumber() - 1);
     }
 

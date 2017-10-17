@@ -97,7 +97,7 @@ public abstract class AbstractFix implements IntentionAction {
         if (requiresEditor) {
           final DataContext dataContext = DataManager.getInstance().getDataContext();
 
-          editor = LangDataKeys.EDITOR.getData(dataContext);
+          editor = dataContext.getData(LangDataKeys.EDITOR);
           if (editor == null) {
             if ((editor = FileEditorManager.getInstance(project).getSelectedTextEditor()) == null) {
               return;

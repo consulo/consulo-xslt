@@ -15,6 +15,9 @@
  */
 package org.intellij.plugins.xsltDebugger.ui.actions;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+
 import com.intellij.diagnostic.logging.AdditionalTabComponent;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.DataManager;
@@ -25,9 +28,6 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.vcs.vfs.VcsFileSystem;
 import com.intellij.openapi.vcs.vfs.VcsVirtualFile;
-
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
 
 @SuppressWarnings({ "ComponentNotRegistered" })
 public class OpenOutputAction extends AnAction {
@@ -40,7 +40,7 @@ public class OpenOutputAction extends AnAction {
   }
 
   public void actionPerformed(AnActionEvent e) {
-    final Editor editor = PlatformDataKeys.EDITOR.getData(DataManager.getInstance().getDataContext(myConsole.getComponent()));
+    final Editor editor = DataManager.getInstance().getDataContext(myConsole.getComponent()).getData(PlatformDataKeys.EDITOR);
     if (editor != null) {
       try {
         final byte[] content = editor.getDocument().getText().getBytes("UTF-8");
@@ -51,7 +51,7 @@ public class OpenOutputAction extends AnAction {
             return Charset.forName("UTF-8");
           }
         };
-        FileEditorManager.getInstance(PlatformDataKeys.PROJECT.getData(e.getDataContext())).openFile(file, true);
+        FileEditorManager.getInstance(e.getProject()).openFile(file, true);
       } catch (UnsupportedEncodingException e1) {
         throw new AssertionError(e);
       }
@@ -59,7 +59,7 @@ public class OpenOutputAction extends AnAction {
   }
 
   public void update(AnActionEvent e) {
-    final Editor editor = PlatformDataKeys.EDITOR.getData(DataManager.getInstance().getDataContext(myConsole.getComponent()));
+    final Editor editor = DataManager.getInstance().getDataContext(myConsole.getComponent()).getData(PlatformDataKeys.EDITOR);
     e.getPresentation().setEnabled(editor != null && editor.getDocument().getTextLength() > 0);
   }
 }

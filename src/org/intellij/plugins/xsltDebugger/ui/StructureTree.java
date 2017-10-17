@@ -16,15 +16,20 @@
 
 package org.intellij.plugins.xsltDebugger.ui;
 
-import com.intellij.openapi.actionSystem.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreePath;
+
+import org.intellij.plugins.xsltDebugger.ui.actions.CopyValueAction;
+import org.intellij.plugins.xsltDebugger.ui.actions.NavigateAction;
+import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.DataSink;
+import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.actionSystem.TypeSafeDataProvider;
+import com.intellij.openapi.util.Key;
 import com.intellij.pom.Navigatable;
 import com.intellij.ui.PopupHandler;
 import com.intellij.ui.treeStructure.Tree;
-import org.intellij.plugins.xsltDebugger.ui.actions.CopyValueAction;
-import org.intellij.plugins.xsltDebugger.ui.actions.NavigateAction;
-
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.TreePath;
 
 /**
  * Created by IntelliJ IDEA.
@@ -45,8 +50,9 @@ public class StructureTree extends Tree implements TypeSafeDataProvider {
     PopupHandler.installFollowingSelectionTreePopup(this, structureContextActions, "XSLT.Debugger.GeneratedStructure", ActionManager.getInstance());
   }
 
-  public void calcData(DataKey key, DataSink sink) {
-    if (key.equals(PlatformDataKeys.NAVIGATABLE)) {
+  @Override
+  public void calcData(Key<?> key, DataSink sink) {
+    if (key == PlatformDataKeys.NAVIGATABLE) {
       final TreePath selection = getSelectionPath();
       if (selection != null) {
         final Object o = selection.getLastPathComponent();

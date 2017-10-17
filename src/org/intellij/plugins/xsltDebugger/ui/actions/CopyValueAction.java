@@ -15,21 +15,22 @@
  */
 package org.intellij.plugins.xsltDebugger.ui.actions;
 
+import java.awt.datatransfer.StringSelection;
+
+import javax.swing.JComponent;
+import javax.swing.tree.DefaultMutableTreeNode;
+
+import org.intellij.plugins.xsltDebugger.rt.engine.OutputEventQueue;
+import org.intellij.plugins.xsltDebugger.ui.GeneratedStructureModel;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DataKey;
 import com.intellij.openapi.ide.CopyPasteManager;
-import org.intellij.plugins.xsltDebugger.rt.engine.OutputEventQueue;
-import org.intellij.plugins.xsltDebugger.ui.GeneratedStructureModel;
-
-import javax.swing.*;
-import javax.swing.tree.DefaultMutableTreeNode;
-import java.awt.datatransfer.StringSelection;
+import com.intellij.openapi.util.Key;
 
 @SuppressWarnings({ "ComponentNotRegistered" })
 public class CopyValueAction extends AnAction {
-  public static final DataKey<DefaultMutableTreeNode> SELECTED_NODE = DataKey.create("SELECTED_NODE");
+  public static final Key<DefaultMutableTreeNode> SELECTED_NODE = Key.create("SELECTED_NODE");
 
   public CopyValueAction(JComponent component) {
     final AnAction action = ActionManager.getInstance().getAction("$Copy");
