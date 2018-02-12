@@ -15,74 +15,92 @@
  */
 package org.intellij.lang.xpath.xslt.util;
 
-import com.intellij.openapi.util.ModificationTracker;
-import com.intellij.openapi.util.Key;
-import com.intellij.psi.impl.source.xml.XmlTagImpl;
-import com.intellij.psi.impl.source.xml.XmlAttributeImpl;
-import com.intellij.psi.xml.XmlAttribute;
-import com.intellij.psi.xml.XmlTag;
-
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
-public class NSDeclTracker implements ModificationTracker {
-    private static final Key<Integer> MOD_COUNT = Key.create("MOD_COUNT");
+import com.intellij.openapi.util.Key;
+import com.intellij.openapi.util.ModificationTracker;
+import com.intellij.psi.PsiFile;
+import com.intellij.psi.impl.source.xml.XmlAttributeImpl;
+import com.intellij.psi.impl.source.xml.XmlTagImpl;
+import com.intellij.psi.xml.XmlAttribute;
+import com.intellij.psi.xml.XmlTag;
 
-    private final XmlTagImpl myRootTag;
-    private final List<XmlAttribute> myNSDecls;
-    private int myRootCount;
-    private int myCount;
+public class NSDeclTracker implements ModificationTracker
+{
+	private static final Key<Long> MOD_COUNT = Key.create("MOD_COUNT");
 
-    public NSDeclTracker(XmlTag rootTag) {
-        myRootTag = (XmlTagImpl)rootTag;
-        myNSDecls = getNSDecls(false);
-        myRootCount = myRootTag.getModificationCount();
-        myCount = 0;
-    }
+	private final XmlTagImpl myRootTag;
+	private final PsiFile myFile;
+	private final List<XmlAttribute> myNSDecls;
+	private long myRootCount;
+	private int myCount;
 
-    public long getModificationCount() {
-        return myRootTag.getModificationCount() == myRootCount ? myCount : queryCount();
-    }
+	public NSDeclTracker(XmlTag rootTag)
+	{
+		myRootTag = (XmlTagImpl) rootTag;
+		myFile = rootTag.getContainingFile();
+		myNSDecls = getNSDecls(false);
+		myRootCount = myFile.getModificationStamp();
+		myCount = 0;
+	}
 
-    @SuppressWarnings({ "AutoUnboxing" })
-    private synchronized long queryCount() {
-        for (XmlAttribute decl : myNSDecls) {
-            if (!decl.isValid()) {
-                return update();
-            }
-            final Integer modCount = decl.getUserData(MOD_COUNT);
-            if (modCount != null && ((XmlAttributeImpl)decl).getModificationCount() != modCount) {
-                return update();
-            }
-        }
-        final ArrayList<XmlAttribute> list = getNSDecls(false);
-        if (!list.equals(myNSDecls)) {
-            return update();
-        }
+	public long getModificationCount()
+	{
+		return myFile.getModificationStamp() == myRootCount ? myCount : queryCount();
+	}
 
-        myRootCount = myRootTag.getModificationCount();
-        return myCount;
-    }
+	@SuppressWarnings({"AutoUnboxing"})
+	private synchronized long queryCount()
+	{
+		for(XmlAttribute decl : myNSDecls)
+		{
+			if(!decl.isValid())
+			{
+				return update();
+			}
+			final Long modCount = decl.getUserData(MOD_COUNT);
+			if(modCount != null && ((XmlAttributeImpl) decl).getContainingFile().getModificationStamp() != modCount)
+			{
+				return update();
+			}
+		}
+		final ArrayList<XmlAttribute> list = getNSDecls(false);
+		if(!list.equals(myNSDecls))
+		{
+			return update();
+		}
 
-    private long update() {
-        myNSDecls.clear();
-        myNSDecls.addAll(getNSDecls(true));
-        myRootCount = myRootTag.getModificationCount();
-        return ++myCount;
-    }
+		myRootCount = myFile.getModificationStamp();
+		return myCount;
+	}
 
-    private ArrayList<XmlAttribute> getNSDecls(boolean updateModCount) {
-        final ArrayList<XmlAttribute> list = new ArrayList<XmlAttribute>(Arrays.asList(myRootTag.getAttributes()));
-        final Iterator<XmlAttribute> it = list.iterator();
-        while (it.hasNext()) {
-            final XmlAttribute attribute = it.next();
-            if (!attribute.isNamespaceDeclaration()) it.remove();
-            if (updateModCount) {
-                attribute.putUserData(MOD_COUNT, ((XmlAttributeImpl)attribute).getModificationCount());
-            }
-        }
-        return list;
-    }
+	private long update()
+	{
+		myNSDecls.clear();
+		myNSDecls.addAll(getNSDecls(true));
+		myRootCount = myFile.getModificationStamp();
+		return ++myCount;
+	}
+
+	private ArrayList<XmlAttribute> getNSDecls(boolean updateModCount)
+	{
+		final ArrayList<XmlAttribute> list = new ArrayList<XmlAttribute>(Arrays.asList(myRootTag.getAttributes()));
+		final Iterator<XmlAttribute> it = list.iterator();
+		while(it.hasNext())
+		{
+			final XmlAttribute attribute = it.next();
+			if(!attribute.isNamespaceDeclaration())
+			{
+				it.remove();
+			}
+			if(updateModCount)
+			{
+				attribute.putUserData(MOD_COUNT, ((XmlAttributeImpl) attribute).getContainingFile().getModificationStamp());
+			}
+		}
+		return list;
+	}
 }
