@@ -4,6 +4,7 @@
       <root url="jar://$PROJECT_DIR$/dep/com.intellij.xpath/lib/com.intellij.xpath-2-SNAPSHOT.jar!/" />
       <root url="jar://$PROJECT_DIR$/dep/com.intellij.xpath/lib/com.intellij.xpath-xpath.lang-2-SNAPSHOT.jar!/" />
       <root url="jar://$PROJECT_DIR$/dep/com.intellij.xpath/lib/com.intellij.xpath-xpath.view-2-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dep/com.intellij.xpath/lib/com.intellij.xpath-xpath.intelliLang-2-SNAPSHOT.jar!/" />
     </binaries>
   </library>
 </component>

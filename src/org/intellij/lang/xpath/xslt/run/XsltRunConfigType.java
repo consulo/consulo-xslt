@@ -24,6 +24,7 @@ import com.intellij.execution.configurations.ConfigurationType;
 import com.intellij.execution.configurations.ConfigurationTypeUtil;
 import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.openapi.project.Project;
+import consulo.ui.image.Image;
 import icons.XsltIcons;
 
 public class XsltRunConfigType implements ConfigurationType {
@@ -51,7 +52,7 @@ public class XsltRunConfigType implements ConfigurationType {
     return "Run XSLT Script";
   }
 
-  public Icon getIcon() {
+  public Image getIcon() {
     return XsltIcons.Xslt;
   }
 

@@ -86,6 +86,8 @@ import com.intellij.util.ArrayUtil;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.PlatformColors;
 import com.intellij.util.ui.UIUtil;
+import consulo.awt.TargetAWT;
+import consulo.bundle.SdkUtil;
 
 class XsltRunSettingsEditor extends SettingsEditor<XsltRunConfiguration> {
   static final boolean ALLOW_CHOOSING_SDK = true;
@@ -328,7 +330,7 @@ class XsltRunSettingsEditor extends SettingsEditor<XsltRunConfiguration> {
                 return jdk.getName();
               }
             }));
-            setIcon(((SdkType) jdk.getSdkType()).getIcon());
+            setIcon(TargetAWT.to(SdkUtil.getIcon(jdk)));
           }
         }
       });
