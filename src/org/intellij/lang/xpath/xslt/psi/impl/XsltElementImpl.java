@@ -15,7 +15,24 @@
  */
 package org.intellij.lang.xpath.xslt.psi.impl;
 
-import consulo.ide.IconDescriptorUpdaters;
+import java.lang.reflect.Array;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+
+import javax.swing.Icon;
+
+import org.intellij.lang.xpath.completion.CompletionLists;
+import org.intellij.lang.xpath.context.ContextProvider;
+import org.intellij.lang.xpath.context.XPathVersion;
+import org.intellij.lang.xpath.psi.XPathElement;
+import org.intellij.lang.xpath.psi.XPathElementVisitor;
+import org.intellij.lang.xpath.xslt.XsltSupport;
+import org.intellij.lang.xpath.xslt.psi.XsltElement;
+import org.intellij.lang.xpath.xslt.psi.XsltElementFactory;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.Language;
 import com.intellij.navigation.ItemPresentation;
@@ -31,19 +48,8 @@ import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.psi.xml.XmlTag;
 import com.intellij.util.IncorrectOperationException;
-import org.intellij.lang.xpath.completion.CompletionLists;
-import org.intellij.lang.xpath.context.ContextProvider;
-import org.intellij.lang.xpath.context.XPathVersion;
-import org.intellij.lang.xpath.psi.XPathElement;
-import org.intellij.lang.xpath.psi.XPathElementVisitor;
-import org.intellij.lang.xpath.xslt.XsltSupport;
-import org.intellij.lang.xpath.xslt.psi.XsltElement;
-import org.intellij.lang.xpath.xslt.psi.XsltElementFactory;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
-import java.lang.reflect.*;
+import consulo.awt.TargetAWT;
+import consulo.ide.IconDescriptorUpdaters;
 
 abstract class XsltElementImpl extends LightElement implements PsiElementNavigationItem, XsltElement, ItemPresentation {
 
@@ -81,7 +87,7 @@ abstract class XsltElementImpl extends LightElement implements PsiElementNavigat
   @Nullable
   @Override
   public Icon getIcon(boolean unused) {
-    return IconDescriptorUpdaters.getIcon(this, 0);
+    return TargetAWT.to(IconDescriptorUpdaters.getIcon(this, 0));
   }
 
   @Nullable

@@ -23,8 +23,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.swing.Icon;
-
 import org.intellij.lang.xpath.XPathFile;
 import org.intellij.lang.xpath.xslt.impl.XsltChecker;
 import org.jetbrains.annotations.NotNull;
@@ -48,9 +46,10 @@ import com.intellij.psi.xml.XmlFile;
 import com.intellij.psi.xml.XmlTag;
 import com.intellij.psi.xml.XmlToken;
 import com.intellij.psi.xml.XmlTokenType;
-import com.intellij.ui.LayeredIcon;
 import com.intellij.util.SmartList;
 import com.intellij.util.xml.NanoXmlUtil;
+import consulo.ui.image.Image;
+import consulo.ui.image.ImageEffects;
 import icons.XsltIcons;
 
 public class XsltSupport {
@@ -346,8 +345,8 @@ public class XsltSupport {
         return namespace.startsWith(XALAN_EXTENSION_PREFIX) && "file".equals(attribute.getName());
     }
 
-    public static Icon createXsltIcon(Icon icon) {
-        return LayeredIcon.create(icon, XsltIcons.Xslt_filetype_overlay);
+    public static Image createXsltIcon(Image icon) {
+        return ImageEffects.layered(icon, XsltIcons.Xslt_filetype_overlay);
     }
 
     private static class XsltSupportProvider implements ParameterizedCachedValueProvider<XsltChecker.LanguageLevel, PsiFile> {

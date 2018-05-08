@@ -1,6 +1,19 @@
 package org.intellij.lang.xpath.xslt.psi.impl;
 
-import consulo.ide.IconDescriptorUpdaters;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+
+import javax.swing.Icon;
+import javax.xml.namespace.QName;
+
+import org.intellij.lang.xpath.completion.CompletionLists;
+import org.intellij.lang.xpath.xslt.context.XsltNamespaceContext;
+import org.intellij.lang.xpath.xslt.impl.references.PrefixReference;
+import org.intellij.lang.xpath.xslt.util.QNameUtil;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.navigation.NavigationItem;
 import com.intellij.openapi.util.TextRange;
@@ -15,19 +28,8 @@ import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.psi.xml.XmlTag;
 import com.intellij.util.IncorrectOperationException;
-import org.intellij.lang.xpath.completion.CompletionLists;
-import org.intellij.lang.xpath.xslt.context.XsltNamespaceContext;
-import org.intellij.lang.xpath.xslt.impl.references.PrefixReference;
-import org.intellij.lang.xpath.xslt.util.QNameUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
-import javax.xml.namespace.QName;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
+import consulo.awt.TargetAWT;
+import consulo.ide.IconDescriptorUpdaters;
 
 public class ImplicitModeElement extends LightElement implements PsiNamedElement, NavigationItem, ItemPresentation {
     private final XmlAttribute myAttribute;
@@ -129,7 +131,7 @@ public class ImplicitModeElement extends LightElement implements PsiNamedElement
 
     @Nullable
     public Icon getIcon(boolean open) {
-        return IconDescriptorUpdaters.getIcon(this, 0);
+        return TargetAWT.to(IconDescriptorUpdaters.getIcon(this, 0));
     }
 
     @Nullable

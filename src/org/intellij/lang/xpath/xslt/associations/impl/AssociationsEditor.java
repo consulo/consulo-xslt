@@ -55,6 +55,7 @@ import com.intellij.ui.treeStructure.Tree;
 import com.intellij.util.IconUtil;
 import com.intellij.util.config.StorageAccessors;
 import com.intellij.util.ui.UIUtil;
+import consulo.awt.TargetAWT;
 import icons.XsltIcons;
 
 class AssociationsEditor {
@@ -397,7 +398,7 @@ class AssociationsEditor {
       public MyNodeDescriptor(NodeDescriptor<PsiFileNode> nodeDescriptor) {
         super(nodeDescriptor.getProject(), null);
         myName = nodeDescriptor.toString();
-        setIcon(LayeredIcon.create(nodeDescriptor.getIcon(), XsltIcons.Association_small));
+        setIcon(LayeredIcon.create(TargetAWT.to(nodeDescriptor.getIcon()), XsltIcons.Association_small));
         myColor = nodeDescriptor.getColor();
         myNode = nodeDescriptor.getElement();
       }

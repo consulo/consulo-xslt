@@ -16,6 +16,7 @@ import com.intellij.xdebugger.breakpoints.XBreakpointProperties;
 import com.intellij.xdebugger.breakpoints.XLineBreakpoint;
 import com.intellij.xdebugger.breakpoints.XLineBreakpointType;
 import com.intellij.xdebugger.evaluation.XDebuggerEditorsProvider;
+import consulo.awt.TargetAWT;
 
 /*
 * Created by IntelliJ IDEA.
@@ -70,14 +71,14 @@ public class XsltBreakpointType extends XLineBreakpointType<XBreakpointPropertie
 	@Override
 	public Icon getEnabledIcon()
 	{
-		return XsltSupport.createXsltIcon(AllIcons.Debugger.Db_set_breakpoint);
+		return TargetAWT.to(XsltSupport.createXsltIcon(AllIcons.Debugger.Db_set_breakpoint));
 	}
 
 	@NotNull
 	@Override
 	public Icon getDisabledIcon()
 	{
-		return XsltSupport.createXsltIcon(AllIcons.Debugger.Db_disabled_breakpoint);
+		return TargetAWT.to(XsltSupport.createXsltIcon(AllIcons.Debugger.Db_disabled_breakpoint));
 	}
 
 	@Override

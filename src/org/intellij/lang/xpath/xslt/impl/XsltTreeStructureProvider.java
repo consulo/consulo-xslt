@@ -35,6 +35,7 @@ import com.intellij.ide.util.treeView.AbstractTreeNode;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
 import com.intellij.ui.LayeredIcon;
+import consulo.awt.TargetAWT;
 import icons.XsltIcons;
 
 public class XsltTreeStructureProvider implements TreeStructureProvider {
@@ -87,7 +88,7 @@ public class XsltTreeStructureProvider implements TreeStructureProvider {
       super.updateImpl(presentationData);
       final PsiFile[] psiFiles = myInstance.getAssociationsFor(getValue());
 
-      Icon icon = XsltSupport.createXsltIcon(presentationData.getIcon(false));
+      Icon icon = TargetAWT.to(XsltSupport.createXsltIcon(TargetAWT.from(presentationData.getIcon(false))));
       if (psiFiles.length > 0) {
         icon = LayeredIcon.create(icon, XsltIcons.Association_small);
       }

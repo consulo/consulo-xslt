@@ -17,5 +17,5 @@ public interface XsltIcons
 	Icon Association_small = IconLoader.getIcon("/icons/association_small.png");  // 11x11
 	Icon XmlComment = IconLoader.getIcon("/icons/xmlComment.png");  // 16x16
 	Image Xslt = IconLoader.getIcon("/icons/xslt.png");  // 16x16
-	Icon Xslt_filetype_overlay = IconLoader.getIcon("/icons/xslt-filetype-overlay.png");  // 11x16
+	Image Xslt_filetype_overlay = IconLoader.getIcon("/icons/xslt-filetype-overlay.png");  // 11x16
 }

@@ -16,8 +16,20 @@
 
 package org.intellij.lang.xpath.xslt.impl;
 
+import javax.swing.Icon;
+import javax.xml.namespace.QName;
+
+import org.intellij.lang.xpath.psi.XPathExpression;
+import org.intellij.lang.xpath.xslt.psi.XsltParameter;
+import org.intellij.lang.xpath.xslt.psi.XsltTemplate;
+import org.intellij.lang.xpath.xslt.util.XsltCodeInsightUtil;
+import org.intellij.lang.xpath.xslt.validation.inspections.TemplateInvocationInspection;
+import org.intellij.lang.xpath.xslt.validation.inspections.UnusedElementInspection;
+import org.intellij.lang.xpath.xslt.validation.inspections.VariableShadowingInspection;
+import org.intellij.lang.xpath.xslt.validation.inspections.XsltDeclarationInspection;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.codeInspection.LocalInspectionTool;
-import consulo.ide.IconDescriptorUpdaters;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.FileStatus;
@@ -32,19 +44,8 @@ import com.intellij.usages.UsageInfo2UsageAdapter;
 import com.intellij.usages.UsageView;
 import com.intellij.usages.rules.UsageGroupingRule;
 import com.intellij.usages.rules.UsageGroupingRuleProvider;
-import org.intellij.lang.xpath.psi.XPathExpression;
-import org.intellij.lang.xpath.xslt.psi.XsltParameter;
-import org.intellij.lang.xpath.xslt.psi.XsltTemplate;
-import org.intellij.lang.xpath.xslt.util.XsltCodeInsightUtil;
-import org.intellij.lang.xpath.xslt.validation.inspections.TemplateInvocationInspection;
-import org.intellij.lang.xpath.xslt.validation.inspections.UnusedElementInspection;
-import org.intellij.lang.xpath.xslt.validation.inspections.VariableShadowingInspection;
-import org.intellij.lang.xpath.xslt.validation.inspections.XsltDeclarationInspection;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
-import javax.xml.namespace.QName;
+import consulo.awt.TargetAWT;
+import consulo.ide.IconDescriptorUpdaters;
 
 public class XsltStuffProvider implements UsageGroupingRuleProvider {
 
@@ -80,7 +81,7 @@ public class XsltStuffProvider implements UsageGroupingRuleProvider {
         }
 
         public Icon getIcon(boolean isOpen) {
-            return IconDescriptorUpdaters.getIcon(myTemplate, 0);
+            return TargetAWT.to(IconDescriptorUpdaters.getIcon(myTemplate, 0));
         }
 
         @NotNull
