@@ -22,6 +22,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.xml.namespace.QName;
 
 import org.intellij.lang.xpath.completion.NamespaceLookup;
@@ -33,8 +35,6 @@ import org.intellij.lang.xpath.xslt.psi.impl.ImplicitModeElement;
 import org.intellij.lang.xpath.xslt.util.MatchTemplateMatcher;
 import org.intellij.lang.xpath.xslt.util.QNameUtil;
 import org.intellij.lang.xpath.xslt.util.XsltCodeInsightUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import com.intellij.codeInsight.completion.CompletionInitializationContext;
 import com.intellij.codeInsight.daemon.EmptyResolveMessageProvider;
 import com.intellij.openapi.util.TextRange;
@@ -73,12 +73,12 @@ class ModeReference extends SimpleAttributeReference implements PsiPolyVariantRe
     }
 
     @Override
-    @NotNull
+    @Nonnull
     protected TextRange getTextRange() {
         return myImplicitModeElement.getModeRange();
     }
 
-    @NotNull
+    @Nonnull
     public Object[] getVariants() {
         final PsiFile containingFile = myAttribute.getContainingFile();
         if (containingFile instanceof XmlFile && XsltSupport.isXsltFile(containingFile)) {
@@ -112,7 +112,7 @@ class ModeReference extends SimpleAttributeReference implements PsiPolyVariantRe
         }
     }
 
-    @NotNull
+    @Nonnull
     public ResolveResult[] multiResolve(final boolean incompleteCode) {
         final PsiFile containingFile = myAttribute.getContainingFile();
         if (containingFile instanceof XmlFile && XsltSupport.isXsltFile(containingFile) && myImplicitModeElement.getQName() != null) {
@@ -199,7 +199,7 @@ class ModeReference extends SimpleAttributeReference implements PsiPolyVariantRe
         }
     }
 
-    @NotNull
+    @Nonnull
     public String getUnresolvedMessagePattern() {
         final QName qName = myImplicitModeElement.getQName();
         if (qName != null && qName != QNameUtil.UNRESOLVED) {
@@ -214,7 +214,7 @@ class ModeReference extends SimpleAttributeReference implements PsiPolyVariantRe
       super(attribute);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public Object[] getVariants() {
       return getPrefixCompletions(myAttribute);

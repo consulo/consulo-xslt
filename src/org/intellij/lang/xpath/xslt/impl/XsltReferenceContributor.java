@@ -24,13 +24,15 @@ import static com.intellij.patterns.XmlPatterns.xmlTag;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.annotation.Nonnull;
+
 import org.intellij.lang.xpath.psi.XPath2TypeElement;
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.context.XsltNamespaceContext;
 import org.intellij.lang.xpath.xslt.impl.references.PrefixReference;
 import org.intellij.lang.xpath.xslt.impl.references.XsltReferenceProvider;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import com.intellij.codeInsight.daemon.impl.analysis.CreateNSDeclarationIntentionFix;
 import com.intellij.codeInspection.LocalQuickFix;
 import com.intellij.codeInspection.LocalQuickFixProvider;
@@ -77,9 +79,9 @@ public class XsltReferenceContributor
 			registrar.registerReferenceProvider(xmlAttributeValue().withParent(xmlAttribute("as").withParent(xmlTag().withNamespace(XsltSupport.XSLT_NS))).withValue(string().contains(":")),
 					new PsiReferenceProvider()
 			{
-				@NotNull
+				@Nonnull
 				@Override
-				public PsiReference[] getReferencesByElement(@NotNull PsiElement element, @NotNull ProcessingContext context)
+				public PsiReference[] getReferencesByElement(@Nonnull PsiElement element, @Nonnull ProcessingContext context)
 				{
 					return new PsiReference[]{new NamespacePrefixReference(element)};
 				}
@@ -94,7 +96,7 @@ public class XsltReferenceContributor
 			super((XmlAttribute) element.getParent());
 		}
 
-		@NotNull
+		@Nonnull
 		@Override
 		public Object[] getVariants()
 		{
@@ -112,7 +114,7 @@ public class XsltReferenceContributor
 						new CreateNSDeclarationIntentionFix(valueElement, getCanonicalText())
 						{
 							@Override
-							public boolean showHint(@NotNull Editor editor)
+							public boolean showHint(@Nonnull Editor editor)
 							{
 								return false;
 							}
@@ -158,7 +160,7 @@ public class XsltReferenceContributor
 			return name.equals(text) || text.endsWith(":" + name);
 		}
 
-		@NotNull
+		@Nonnull
 		@Override
 		public String getUnresolvedMessagePattern()
 		{
@@ -177,9 +179,9 @@ public class XsltReferenceContributor
 	{
 		static final PsiReferenceProvider INSTANCE = new SchemaTypeProvider();
 
-		@NotNull
+		@Nonnull
 		@Override
-		public PsiReference[] getReferencesByElement(@NotNull PsiElement element, @NotNull ProcessingContext context)
+		public PsiReference[] getReferencesByElement(@Nonnull PsiElement element, @Nonnull ProcessingContext context)
 		{
 			final SchemaTypeReference reference = SchemaTypeReference.create(element);
 			return reference != null ? new PsiReference[]{reference} : PsiReference.EMPTY_ARRAY;

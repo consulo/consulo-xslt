@@ -28,8 +28,9 @@ import org.intellij.lang.xpath.xslt.psi.impl.ResolveUtil;
 import org.intellij.lang.xpath.xslt.impl.XsltIncludeIndex;
 import org.intellij.lang.xpath.xslt.quickfix.CreateTemplateFix;
 import org.intellij.lang.xpath.xslt.util.NamedTemplateMatcher;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.codeInsight.daemon.EmptyResolveMessageProvider;
 import com.intellij.codeInspection.LocalQuickFix;
 import com.intellij.codeInspection.LocalQuickFixProvider;
@@ -59,7 +60,7 @@ class TemplateReference extends AttributeReference implements EmptyResolveMessag
 		return new NamedTemplateMatcher(PsiTreeUtil.getParentOfType(attribute, XmlDocument.class), attribute.getValue());
 	}
 
-	@NotNull
+	@Nonnull
 	public ResolveResult[] multiResolve(boolean incompleteCode)
 	{
 		final PsiElement element = resolve();
@@ -99,7 +100,7 @@ class TemplateReference extends AttributeReference implements EmptyResolveMessag
 		return new LocalQuickFix[]{new CreateTemplateFix(myAttribute.getParent(), myName)};
 	}
 
-	@NotNull
+	@Nonnull
 	public String getUnresolvedMessagePattern()
 	{
 		return "Cannot resolve template ''{0}''";

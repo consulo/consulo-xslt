@@ -38,7 +38,7 @@ import com.intellij.refactoring.ui.UsageViewDescriptorAdapter;
 import com.intellij.usageView.UsageInfo;
 import com.intellij.usageView.UsageViewDescriptor;
 import com.intellij.util.IncorrectOperationException;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.*;
 
@@ -62,12 +62,12 @@ class IntroduceParameterProcessor extends BaseRefactoringProcessor {
     }
 
 
-    @NotNull
+    @Nonnull
     protected UsageViewDescriptor createUsageViewDescriptor(UsageInfo[] usageInfos) {
         return new MyUsageViewDescriptorAdapter();
     }
 
-    @NotNull
+    @Nonnull
     protected UsageInfo[] findUsages() {
         int usageCount = myOtherExpressions.size() + 1;
 
@@ -170,7 +170,7 @@ class IntroduceParameterProcessor extends BaseRefactoringProcessor {
 
     private class MyUsageViewDescriptorAdapter extends UsageViewDescriptorAdapter {
 
-        @NotNull
+        @Nonnull
         public PsiElement[] getElements() {
             return new PsiElement[]{ myTemplate };
         }

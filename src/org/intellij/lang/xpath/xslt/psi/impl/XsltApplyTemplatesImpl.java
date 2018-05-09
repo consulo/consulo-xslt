@@ -13,7 +13,7 @@ import org.intellij.lang.xpath.xslt.util.QNameUtil;
 import org.intellij.lang.xpath.xslt.util.XsltCodeInsightUtil;
 
 import com.intellij.psi.xml.XmlTag;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 import javax.xml.namespace.QName;
 

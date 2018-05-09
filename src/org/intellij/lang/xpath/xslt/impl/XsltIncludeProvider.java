@@ -18,8 +18,9 @@ package org.intellij.lang.xpath.xslt.impl;
 
 import java.util.ArrayList;
 
+import javax.annotation.Nonnull;
+
 import org.intellij.lang.xpath.xslt.XsltSupport;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.ide.highlighter.XmlFileType;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -36,7 +37,7 @@ import com.intellij.util.xml.NanoXmlUtil;
 public class XsltIncludeProvider extends FileIncludeProvider
 {
 	@Override
-	@NotNull
+	@Nonnull
 	public String getId()
 	{
 		return "xslt";
@@ -49,13 +50,13 @@ public class XsltIncludeProvider extends FileIncludeProvider
 	}
 
 	@Override
-	public void registerFileTypesUsedForIndexing(@NotNull Consumer<FileType> fileTypeSink)
+	public void registerFileTypesUsedForIndexing(@Nonnull Consumer<FileType> fileTypeSink)
 	{
 		fileTypeSink.consume(XmlFileType.INSTANCE);
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FileIncludeInfo[] getIncludeInfos(FileContent content)
 	{
 		CharSequence contentAsText = content.getContentAsText();

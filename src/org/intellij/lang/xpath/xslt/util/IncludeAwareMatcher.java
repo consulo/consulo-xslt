@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.xpath.xslt.util;
 
+import javax.annotation.Nullable;
+
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlDocument;
@@ -22,7 +24,6 @@ import com.intellij.psi.xml.XmlFile;
 import com.intellij.psi.xml.XmlTag;
 import org.intellij.lang.xpath.xslt.psi.impl.ResolveUtil;
 import org.intellij.lang.xpath.xslt.XsltSupport;
-import org.jetbrains.annotations.Nullable;
 
 public abstract class IncludeAwareMatcher extends BaseMatcher {
     protected final XmlDocument myDocument;

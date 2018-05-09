@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.xpath.xslt.psi.impl;
 
+import javax.annotation.Nullable;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.util.Key;
 import com.intellij.openapi.util.Pair;
@@ -23,7 +25,6 @@ import com.intellij.psi.xml.XmlTag;
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.psi.XsltElement;
 import org.intellij.lang.xpath.xslt.psi.XsltElementFactory;
-import org.jetbrains.annotations.Nullable;
 
 class XsltElementFactoryImpl extends XsltElementFactory {
     private static final Key<Pair<ASTNode, XsltElement>> WRAPPER = Key.create("WRAPPER");

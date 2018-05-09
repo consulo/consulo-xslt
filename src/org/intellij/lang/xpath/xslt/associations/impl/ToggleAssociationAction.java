@@ -25,11 +25,12 @@ import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiFile;
-import org.jetbrains.annotations.Nullable;
 
 import org.intellij.lang.xpath.xslt.associations.FileAssociationsManager;
 
 import java.io.File;
+
+import javax.annotation.Nullable;
 
 class ToggleAssociationAction extends ToggleAction {
     private final FileAssociationsManager myFileAssociationsManager;

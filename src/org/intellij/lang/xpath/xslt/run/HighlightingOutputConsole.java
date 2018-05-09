@@ -22,7 +22,7 @@ import javax.swing.JComponent;
 import javax.swing.JTabbedPane;
 
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 import com.intellij.diagnostic.logging.AdditionalTabComponent;
 import com.intellij.execution.filters.TextConsoleBuilderFactory;
 import com.intellij.execution.ui.ConsoleView;

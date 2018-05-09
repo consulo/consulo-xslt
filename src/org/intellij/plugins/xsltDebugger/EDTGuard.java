@@ -25,8 +25,8 @@ import com.intellij.openapi.util.Pair;
 import com.intellij.util.Alarm;
 import com.intellij.util.containers.ContainerUtil;
 import org.intellij.plugins.xsltDebugger.rt.engine.Watchable;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import javax.swing.*;
 import java.io.Serializable;
@@ -66,7 +66,7 @@ class EDTGuard implements InvocationHandler {
   }
 
   @Nullable
-  public Object invoke(Object proxy, @NotNull Method method, Object[] args) throws Throwable {
+  public Object invoke(Object proxy, @Nonnull Method method, Object[] args) throws Throwable {
     if (SwingUtilities.isEventDispatchThread()) {
       return invokeAsync(method, args);
     }
@@ -100,7 +100,7 @@ class EDTGuard implements InvocationHandler {
   }
 
   @Nullable
-  private Object invoke(@NotNull Method method, Object[] args) throws Throwable {
+  private Object invoke(@Nonnull Method method, Object[] args) throws Throwable {
     try {
       return convert(method.invoke(myTarget, args));
     } catch (InvocationTargetException e) {
@@ -152,8 +152,8 @@ class EDTGuard implements InvocationHandler {
     return o;
   }
 
-  @NotNull
-  public static <T, O extends Watchable> T create(@NotNull final O target, final ProcessHandler process) {
+  @Nonnull
+  public static <T, O extends Watchable> T create(@Nonnull final O target, final ProcessHandler process) {
     final Pair<LinkedBlockingQueue<Call>, LinkedBlockingQueue<Call.Result>> queue =
       Pair.create(new LinkedBlockingQueue<Call>(10), new LinkedBlockingQueue<Call.Result>());
 
@@ -281,7 +281,7 @@ class EDTGuard implements InvocationHandler {
       myArguments = arguments;
     }
 
-    @NotNull
+    @Nonnull
     public Result invoke() {
       try {
         return new Result(EDTGuard.this.invoke(myMethod, myArguments));

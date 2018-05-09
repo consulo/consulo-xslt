@@ -19,7 +19,7 @@ package org.intellij.lang.xpath.xslt.run;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.diagnostic.logging.AdditionalTabComponent;
 import com.intellij.execution.CantRunException;
 import com.intellij.execution.configurations.AdditionalTabComponentManager;
@@ -52,7 +52,7 @@ public abstract class XsltRunnerExtension {
 
     protected abstract boolean supports(XsltRunConfiguration config, boolean debugger);
 
-    @NotNull
+    @Nonnull
     public static List<XsltRunnerExtension> getExtensions(XsltRunConfiguration config, boolean debugger) {
         final XsltRunnerExtension[] extensions = Extensions.getExtensions(EXTENSION_POINT_NAME);
         final ArrayList<XsltRunnerExtension> list = new ArrayList<XsltRunnerExtension>(extensions.length);

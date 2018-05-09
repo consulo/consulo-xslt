@@ -19,11 +19,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.associations.FileAssociationsManager;
 import org.jdom.Element;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import com.intellij.diagnostic.logging.DebuggerLogConsoleManager;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.Executor;
@@ -101,10 +103,10 @@ public final class XsltRunConfiguration extends RunConfigurationBase implements 
 	private VirtualFilePointer myXsltFile = null;
 	@Nullable
 	private VirtualFilePointer myXmlInputFile = null;
-	@NotNull
+	@Nonnull
 	private OutputType myOutputType = OutputType.CONSOLE;
 	private boolean mySaveToFile = false;
-	@NotNull
+	@Nonnull
 	private JdkChoice myJdkChoice = JdkChoice.FROM_MODULE;
 	@Nullable
 	private FileType myFileType = XmlFileType.INSTANCE;
@@ -135,7 +137,7 @@ public final class XsltRunConfiguration extends RunConfigurationBase implements 
 	}
 
 	@Override
-	public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment executionEnvironment) throws ExecutionException
+	public RunProfileState getState(@Nonnull Executor executor, @Nonnull ExecutionEnvironment executionEnvironment) throws ExecutionException
 	{
 		if(myXsltFile == null)
 		{
@@ -269,7 +271,7 @@ public final class XsltRunConfiguration extends RunConfigurationBase implements 
 
 	// return modules to compile before run. Null or empty list to make project
 	@Override
-	@NotNull
+	@Nonnull
 	public Module[] getModules()
 	{
 		return getModule() != null ? new Module[]{getModule()} : Module.EMPTY_ARRAY;
@@ -430,7 +432,7 @@ public final class XsltRunConfiguration extends RunConfigurationBase implements 
 		myVmArguments = vmArguments;
 	}
 
-	public void setXsltFile(@NotNull String xsltFile)
+	public void setXsltFile(@Nonnull String xsltFile)
 	{
 		if(isEmpty(xsltFile))
 		{
@@ -494,7 +496,7 @@ public final class XsltRunConfiguration extends RunConfigurationBase implements 
 		return myJdk != null ? SdkTable.getInstance().findSdk(myJdk) : null;
 	}
 
-	public void setXmlInputFile(@NotNull String xmlInputFile)
+	public void setXmlInputFile(@Nonnull String xmlInputFile)
 	{
 		if(isEmpty(xmlInputFile))
 		{
@@ -521,13 +523,13 @@ public final class XsltRunConfiguration extends RunConfigurationBase implements 
 		myJdk = projectJdk != null ? projectJdk.getName() : null;
 	}
 
-	@NotNull
+	@Nonnull
 	public OutputType getOutputType()
 	{
 		return myOutputType;
 	}
 
-	public void setOutputType(@NotNull OutputType outputType)
+	public void setOutputType(@Nonnull OutputType outputType)
 	{
 		myOutputType = outputType;
 	}
@@ -542,13 +544,13 @@ public final class XsltRunConfiguration extends RunConfigurationBase implements 
 		mySaveToFile = saveToFile;
 	}
 
-	@NotNull
+	@Nonnull
 	public JdkChoice getJdkChoice()
 	{
 		return myJdkChoice;
 	}
 
-	public void setJdkChoice(@NotNull JdkChoice jdkChoice)
+	public void setJdkChoice(@Nonnull JdkChoice jdkChoice)
 	{
 		myJdkChoice = jdkChoice;
 	}
@@ -632,7 +634,7 @@ public final class XsltRunConfiguration extends RunConfigurationBase implements 
 		return mySuggestedName;
 	}
 
-	public XsltRunConfiguration initFromFile(@NotNull XmlFile file)
+	public XsltRunConfiguration initFromFile(@Nonnull XmlFile file)
 	{
 		assert XsltSupport.isXsltFile(file) : "Not an XSLT file: " + file.getName();
 		mySuggestedName = file.getName();

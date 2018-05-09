@@ -10,7 +10,7 @@ import com.intellij.psi.XmlElementVisitor;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.psi.xml.XmlTag;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.psi.XsltApplyTemplates;
@@ -35,23 +35,23 @@ import java.util.Map;
 */
 public class TemplateInvocationInspection extends XsltInspection {
 
-  @NotNull
+  @Nonnull
     public HighlightDisplayLevel getDefaultLevel() {
         return HighlightDisplayLevel.ERROR;
     }
 
-    @NotNull
+    @Nonnull
     public String getDisplayName() {
         return "Template Invocation Problems";
     }
 
-    @NotNull
+    @Nonnull
     public String getShortName() {
         return "XsltTemplateInvocation";
     }
 
-    @NotNull
-    public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, final boolean isOnTheFly) {
+    @Nonnull
+    public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, final boolean isOnTheFly) {
         final XsltElementFactory xsltElementFactory = XsltElementFactory.getInstance();
         return new XmlElementVisitor() {
             @Override

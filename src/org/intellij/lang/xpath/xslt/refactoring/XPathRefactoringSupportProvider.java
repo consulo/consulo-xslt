@@ -29,7 +29,7 @@ import org.intellij.lang.xpath.xslt.psi.XsltTemplate;
 import org.intellij.lang.xpath.xslt.psi.XsltVariable;
 import org.intellij.lang.xpath.xslt.refactoring.introduceParameter.XsltIntroduceParameterAction;
 import org.intellij.lang.xpath.xslt.refactoring.introduceVariable.XsltIntroduceVariableAction;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * @author Dmitry Avdeev
@@ -37,7 +37,7 @@ import org.jetbrains.annotations.NotNull;
 public class XPathRefactoringSupportProvider extends RefactoringSupportProvider {
 
   @Override
-  public boolean isAvailable(@NotNull PsiElement context) {
+  public boolean isAvailable(@Nonnull PsiElement context) {
     PsiFile containingFile = context.getContainingFile();
     if (containingFile instanceof XPathFile) {
       final XmlFile xmlFile = PsiTreeUtil.getContextOfType(containingFile, XmlFile.class);

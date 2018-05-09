@@ -22,6 +22,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.psi.XsltElement;
 import org.intellij.lang.xpath.xslt.psi.XsltElementFactory;
@@ -29,8 +32,6 @@ import org.intellij.lang.xpath.xslt.psi.XsltParameter;
 import org.intellij.lang.xpath.xslt.psi.XsltTemplate;
 import org.intellij.lang.xpath.xslt.psi.XsltVariable;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import com.intellij.ide.highlighter.XmlFileType;
 import com.intellij.navigation.NavigationItem;
 import com.intellij.openapi.project.Project;
@@ -93,17 +94,17 @@ public class XsltSymbolIndex extends FileBasedIndexExtension<String, XsltSymbolI
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public ID<String, Kind> getName() {
         return NAME;
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public DataIndexer<String, Kind, FileContent> getIndexer() {
         return new DataIndexer<String, Kind, FileContent>() {
             @Override
-            @NotNull
+            @Nonnull
             public Map<String, Kind> map(FileContent inputData) {
                 CharSequence inputDataContentAsText = inputData.getContentAsText();
                 if (CharArrayUtil.indexOf(inputDataContentAsText, XsltSupport.XSLT_NS, 0) == -1) {

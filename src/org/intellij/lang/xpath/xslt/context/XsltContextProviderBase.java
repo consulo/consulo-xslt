@@ -49,9 +49,9 @@ import org.intellij.lang.xpath.xslt.psi.XsltVariable;
 import org.intellij.lang.xpath.xslt.psi.XsltWithParam;
 import org.intellij.lang.xpath.xslt.util.NSDeclTracker;
 import org.intellij.lang.xpath.xslt.util.QNameUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
 
+import javax.annotation.Nullable;
 import javax.xml.namespace.QName;
 import java.util.*;
 
@@ -232,7 +232,7 @@ public abstract class XsltContextProviderBase extends ContextProvider {
     return myContextElement.getElement();
   }
 
-  @NotNull
+  @Nonnull
   public XPathType getExpectedType(XPathExpression expr) {
     final XmlTag tag = PsiTreeUtil.getContextOfType(expr, XmlTag.class, true);
     if (tag != null && XsltSupport.isXsltTag(tag)) {
@@ -287,12 +287,12 @@ public abstract class XsltContextProviderBase extends ContextProvider {
     return XPathType.UNKNOWN;
   }
 
-  @NotNull
+  @Nonnull
   public NamespaceContext getNamespaceContext() {
     return XsltNamespaceContext.NAMESPACE_CONTEXT;
   }
 
-  @NotNull
+  @Nonnull
   public VariableContext getVariableContext() {
     return XsltVariableContext.INSTANCE;
   }
@@ -372,7 +372,7 @@ public abstract class XsltContextProviderBase extends ContextProvider {
     return element.getContainingFile().getOriginalFile();
   }
 
-  @NotNull
+  @Nonnull
   public XPathQuickFixFactory getQuickFixFactory() {
     return XsltQuickFixFactory.INSTANCE;
   }

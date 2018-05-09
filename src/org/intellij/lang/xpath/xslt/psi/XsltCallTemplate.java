@@ -15,7 +15,7 @@
  */
 package org.intellij.lang.xpath.xslt.psi;
 
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 public interface XsltCallTemplate extends XsltTemplateInvocation, XsltNamedElement {
     @Nullable

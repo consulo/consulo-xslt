@@ -26,7 +26,7 @@ import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.impl.XsltIncludeIndex;
 import org.intellij.lang.xpath.xslt.psi.*;
 import org.intellij.lang.xpath.xslt.util.*;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -43,8 +43,8 @@ public class XsltReferenceProvider extends PsiReferenceProvider {
   public XsltReferenceProvider() {
   }
 
-  @NotNull
-  public PsiReference[] getReferencesByElement(@NotNull PsiElement e, @NotNull ProcessingContext context) {
+  @Nonnull
+  public PsiReference[] getReferencesByElement(@Nonnull PsiElement e, @Nonnull ProcessingContext context) {
     final PsiElement element = e.getParent();
     if (element instanceof XmlAttribute) {
       final XmlAttribute attribute = (XmlAttribute)element;

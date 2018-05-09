@@ -15,10 +15,8 @@
  */
 package org.intellij.lang.xpath.xslt.run;
 
-import javax.swing.Icon;
-
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import com.intellij.execution.configurations.ConfigurationType;
 import com.intellij.execution.configurations.ConfigurationTypeUtil;
@@ -43,7 +41,7 @@ public class XsltRunConfigType implements ConfigurationType {
   }
 
   @NonNls
-  @NotNull
+  @Nonnull
   public String getId() {
     return "XSLT";
   }

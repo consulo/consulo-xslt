@@ -15,6 +15,9 @@
  */
 package org.intellij.lang.xpath.xslt.impl;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.formatting.CustomFormattingModelBuilder;
 import com.intellij.formatting.FormattingModel;
 import com.intellij.formatting.FormattingModelBuilder;
@@ -26,8 +29,6 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.codeStyle.CodeStyleSettings;
 import com.intellij.ide.highlighter.XmlFileType;
 import org.intellij.lang.xpath.xslt.XsltSupport;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 class XsltFormattingModelBuilder implements CustomFormattingModelBuilder {
   private final FormattingModelBuilder myBuilder;
@@ -53,7 +54,7 @@ class XsltFormattingModelBuilder implements CustomFormattingModelBuilder {
     return myBuilder.getRangeAffectingIndent(file, offset, elementAtOffset);
   }
 
-  @NotNull
+  @Nonnull
   public FormattingModel createModel(final PsiElement element, final CodeStyleSettings settings) {
     return new XslTextFormattingModel(myBuilder.createModel(element, settings), settings);
   }

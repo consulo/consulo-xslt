@@ -34,7 +34,7 @@ import com.intellij.openapi.vfs.pointers.VirtualFilePointerManager;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import org.jdom.Element;
 
@@ -93,7 +93,7 @@ class FileAssociationsManagerImpl extends FileAssociationsManager implements Pro
   public void projectClosed() {
   }
 
-  @NotNull
+  @Nonnull
   @NonNls
   public String getComponentName() {
     return "XSLT-Support.FileAssociationsManager";

@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.xpath.xslt.quickfix;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
@@ -22,7 +24,6 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.util.IncorrectOperationException;
-import org.jetbrains.annotations.NotNull;
 
 import org.intellij.lang.xpath.psi.XPathBinaryExpression;
 import org.intellij.lang.xpath.psi.XPathExpression;
@@ -39,16 +40,16 @@ public class FlipOperandsFix extends AbstractFix {
         myExpression = PsiTreeUtil.getParentOfType(token, XPathBinaryExpression.class);
     }
 
-    @NotNull
+    @Nonnull
     public String getText() {
         return "Flip '" + myToken.getText() + "' to '" + myToken.getText().replace('<', '>') + "'";
     }
 
-    public boolean isAvailableImpl(@NotNull Project project, Editor editor, PsiFile file) {
+    public boolean isAvailableImpl(@Nonnull Project project, Editor editor, PsiFile file) {
         return myExpression != null && myExpression.isValid() && myExpression.getType() == XPathType.BOOLEAN && myExpression.getROperand() != null;
     }
 
-    public void invoke(@NotNull Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
+    public void invoke(@Nonnull Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
         final XmlAttribute attribute = PsiTreeUtil.getContextOfType(myToken, XmlAttribute.class, true);
         assert attribute != null;
 

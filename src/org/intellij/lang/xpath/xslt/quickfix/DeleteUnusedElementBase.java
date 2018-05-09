@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.xpath.xslt.quickfix;
 
+import javax.annotation.Nonnull;
+
 import org.intellij.lang.xpath.xslt.psi.XsltVariable;
 
 import com.intellij.codeInspection.LocalQuickFix;
@@ -22,7 +24,6 @@ import com.intellij.codeInspection.ProblemDescriptor;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.util.IncorrectOperationException;
-import org.jetbrains.annotations.NotNull;
 
 public abstract class DeleteUnusedElementBase<T extends XsltVariable> implements LocalQuickFix {
     private final String myName;
@@ -33,17 +34,17 @@ public abstract class DeleteUnusedElementBase<T extends XsltVariable> implements
         myElement = element;
     }
 
-    @NotNull
+    @Nonnull
     public String getFamilyName() {
         return "Delete Unused Element";
     }
 
-    @NotNull
+    @Nonnull
     public String getName() {
         return "Delete unused " + getType() + " '" + myName + "'";
     }
 
-    public void applyFix(@NotNull Project project, @NotNull ProblemDescriptor descriptor) {
+    public void applyFix(@Nonnull Project project, @Nonnull ProblemDescriptor descriptor) {
         try {
             deleteElement(myElement);
         } catch (IncorrectOperationException e) {
@@ -53,7 +54,7 @@ public abstract class DeleteUnusedElementBase<T extends XsltVariable> implements
 
     public abstract String getType();
 
-    protected void deleteElement(@NotNull T obj) throws IncorrectOperationException {
+    protected void deleteElement(@Nonnull T obj) throws IncorrectOperationException {
         obj.delete();
     }
 }

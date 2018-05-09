@@ -28,7 +28,7 @@ import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.util.SmartList;
 import org.intellij.lang.xpath.XPathFile;
 import org.intellij.lang.xpath.xslt.XsltSupport;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.Iterator;
 import java.util.List;
@@ -37,7 +37,7 @@ public class XsltXmlAnnotator extends XmlElementVisitor implements Annotator {
 
   private AnnotationHolder myHolder;
 
-  public void annotate(@NotNull PsiElement psiElement, @NotNull AnnotationHolder holder) {
+  public void annotate(@Nonnull PsiElement psiElement, @Nonnull AnnotationHolder holder) {
     try {
       myHolder = holder;
       psiElement.accept(this);
@@ -60,7 +60,7 @@ public class XsltXmlAnnotator extends XmlElementVisitor implements Annotator {
         if (XsltSupport.isXPathAttribute((XmlAttribute)parent)) {
           InjectedLanguageUtil.enumerate(value, new PsiLanguageInjectionHost.InjectedPsiVisitor() {
             @Override
-            public void visit(@NotNull PsiFile injectedPsi, @NotNull List<PsiLanguageInjectionHost.Shred> places) {
+            public void visit(@Nonnull PsiFile injectedPsi, @Nonnull List<PsiLanguageInjectionHost.Shred> places) {
               if (injectedPsi instanceof XPathFile) {
                 if (injectedPsi.getTextLength() == 0) {
                   myHolder.createErrorAnnotation(value, "Empty XPath expression");
@@ -75,7 +75,7 @@ public class XsltXmlAnnotator extends XmlElementVisitor implements Annotator {
         if (singleBraces != null) {
           InjectedLanguageUtil.enumerate(value, new PsiLanguageInjectionHost.InjectedPsiVisitor() {
             @Override
-            public void visit(@NotNull PsiFile injectedPsi, @NotNull List<PsiLanguageInjectionHost.Shred> places) {
+            public void visit(@Nonnull PsiFile injectedPsi, @Nonnull List<PsiLanguageInjectionHost.Shred> places) {
               if (injectedPsi instanceof XPathFile) {
                 for (PsiLanguageInjectionHost.Shred place : places) {
                   final TextRange range = place.getRangeInsideHost();

@@ -15,22 +15,22 @@
  */
 package org.intellij.lang.xpath.xslt.psi;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public interface XsltStylesheet extends XsltElement {
 
-  @NotNull
+  @Nonnull
     XsltParameter[] getParameters();
 
     /**
      * Return top-level xsl:variable elements. Does not include any parameters. 
      */
-    @NotNull
+    @Nonnull
     XsltVariable[] getVariables();
 
-    @NotNull
+    @Nonnull
     XsltTemplate[] getTemplates();
 
-    @NotNull
+    @Nonnull
     XsltFunction[] getFunctions();
 }

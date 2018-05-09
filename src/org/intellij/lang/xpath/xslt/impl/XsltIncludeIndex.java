@@ -16,6 +16,8 @@
 
 package org.intellij.lang.xpath.xslt.impl;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Comparing;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -27,7 +29,6 @@ import com.intellij.util.NullableFunction;
 import com.intellij.util.Processor;
 import com.intellij.util.containers.ContainerUtil;
 import org.intellij.lang.xpath.xslt.XsltSupport;
-import org.jetbrains.annotations.NotNull;
 
 /*
 * Created by IntelliJ IDEA.
@@ -54,7 +55,7 @@ public class XsltIncludeIndex {
     return false;
   }
 
-  public static boolean processForwardDependencies(@NotNull XmlFile file, Processor<XmlFile> processor) {
+  public static boolean processForwardDependencies(@Nonnull XmlFile file, Processor<XmlFile> processor) {
     final VirtualFile virtualFile = file.getVirtualFile();
     if (virtualFile == null) {
       return true;
@@ -65,7 +66,7 @@ public class XsltIncludeIndex {
     return _process(files, project, processor);
   }
 
-  public static boolean processBackwardDependencies(@NotNull XmlFile file, Processor<XmlFile> processor) {
+  public static boolean processBackwardDependencies(@Nonnull XmlFile file, Processor<XmlFile> processor) {
     final VirtualFile virtualFile = file.getVirtualFile();
     if (virtualFile == null) {
       return true;

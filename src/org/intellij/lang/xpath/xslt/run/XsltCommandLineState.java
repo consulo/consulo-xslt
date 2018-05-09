@@ -47,7 +47,7 @@ import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.util.net.NetUtils;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.*;
 import java.io.File;
@@ -72,7 +72,7 @@ public class XsltCommandLineState extends CommandLineState {
     myIsDebugger = "Debug".equals(env.getRunnerId());
   }
 
-  @NotNull
+  @Nonnull
   protected OSProcessHandler startProcess() throws ExecutionException {
     final OSProcessHandler osProcessHandler = createJavaParameters().createOSProcessHandler();
     osProcessHandler.putUserData(STATE, this);

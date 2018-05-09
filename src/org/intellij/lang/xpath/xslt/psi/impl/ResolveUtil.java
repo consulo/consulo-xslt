@@ -21,8 +21,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.Nullable;
+
 import org.intellij.lang.xpath.xslt.impl.XsltIncludeIndex;
-import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;

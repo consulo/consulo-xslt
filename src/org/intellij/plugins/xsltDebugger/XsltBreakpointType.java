@@ -1,9 +1,10 @@
 package org.intellij.plugins.xsltDebugger;
 
+import javax.annotation.Nonnull;
+
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.impl.XsltChecker;
 import org.intellij.plugins.xsltDebugger.impl.XsltDebuggerEditorsProvider;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -23,7 +24,7 @@ import consulo.ui.image.Image;
 */
 public class XsltBreakpointType extends XLineBreakpointType<XBreakpointProperties>
 {
-	@NotNull
+	@Nonnull
 	public static XsltBreakpointType getInstance()
 	{
 		return EXTENSION_POINT_NAME.findExtension(XsltBreakpointType.class);
@@ -38,7 +39,7 @@ public class XsltBreakpointType extends XLineBreakpointType<XBreakpointPropertie
 	}
 
 	@Override
-	public XDebuggerEditorsProvider getEditorsProvider(@NotNull XLineBreakpoint<XBreakpointProperties> breakpoint, @NotNull Project project)
+	public XDebuggerEditorsProvider getEditorsProvider(@Nonnull XLineBreakpoint<XBreakpointProperties> breakpoint, @Nonnull Project project)
 	{
 		final XSourcePosition position = breakpoint.getSourcePosition();
 		if(position == null)
@@ -65,14 +66,14 @@ public class XsltBreakpointType extends XLineBreakpointType<XBreakpointPropertie
 		return null;
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public Image getEnabledIcon()
 	{
 		return XsltSupport.createXsltIcon(AllIcons.Debugger.Db_set_breakpoint);
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public Image getDisabledIcon()
 	{
@@ -80,7 +81,7 @@ public class XsltBreakpointType extends XLineBreakpointType<XBreakpointPropertie
 	}
 
 	@Override
-	public XBreakpointProperties createBreakpointProperties(@NotNull VirtualFile file, int line)
+	public XBreakpointProperties createBreakpointProperties(@Nonnull VirtualFile file, int line)
 	{
 		return null;
 	}

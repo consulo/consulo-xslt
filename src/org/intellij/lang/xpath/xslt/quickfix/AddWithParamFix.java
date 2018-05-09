@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.xpath.xslt.quickfix;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInsight.template.TemplateBuilderImpl;
 import com.intellij.codeInsight.template.TemplateManager;
 import com.intellij.codeInsight.template.impl.MacroCallNode;
@@ -32,7 +34,6 @@ import com.intellij.util.IncorrectOperationException;
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.psi.XsltParameter;
 import org.intellij.lang.xpath.xslt.refactoring.RefactoringUtil;
-import org.jetbrains.annotations.NotNull;
 
 public class AddWithParamFix extends AbstractFix {
     protected XmlTag myTag;
@@ -47,12 +48,12 @@ public class AddWithParamFix extends AbstractFix {
         myName = parameter.getName();
     }
 
-    @NotNull
+    @Nonnull
     public String getText() {
         return "Add Argument for '" + myName + "'";
     }
 
-    public boolean isAvailableImpl(@NotNull Project project, Editor editor, PsiFile file) {
+    public boolean isAvailableImpl(@Nonnull Project project, Editor editor, PsiFile file) {
         return myTag.isValid();
     }
 
@@ -64,7 +65,7 @@ public class AddWithParamFix extends AbstractFix {
         return true;
     }
 
-    public void invoke(@NotNull final Project project, final Editor editor, PsiFile file) throws IncorrectOperationException {
+    public void invoke(@Nonnull final Project project, final Editor editor, PsiFile file) throws IncorrectOperationException {
         final RunResult<SmartPsiElementPointer<XmlTag>> result = new WriteAction<SmartPsiElementPointer<XmlTag>>() {
             protected void run(Result<SmartPsiElementPointer<XmlTag>> result) throws Throwable {
                 final XmlTag withParamTag = RefactoringUtil.addWithParam(myTag);

@@ -42,8 +42,8 @@ import com.intellij.psi.search.searches.ReferencesSearch;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.psi.xml.*;
 import com.intellij.util.Query;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -61,7 +61,7 @@ public class XsltExtractTemplateAction extends XsltRefactoringActionBase {
     }
 
     @Override
-    public void invoke(@NotNull Project project, Editor editor, PsiFile file, DataContext dataContext) {
+    public void invoke(@Nonnull Project project, Editor editor, PsiFile file, DataContext dataContext) {
         if (!invokeImpl(editor, file)) {
             super.invoke(project, editor, file, dataContext);
         }
@@ -146,7 +146,7 @@ public class XsltExtractTemplateAction extends XsltRefactoringActionBase {
         return false;
     }
 
-    private boolean extractFrom(final @NotNull PsiElement start, final PsiElement end, String newName) {
+    private boolean extractFrom(final @Nonnull PsiElement start, final PsiElement end, String newName) {
         final XmlTag outerTemplate = XsltCodeInsightUtil.getTemplateTag(start, false);
         if (outerTemplate == null) {
             return false;

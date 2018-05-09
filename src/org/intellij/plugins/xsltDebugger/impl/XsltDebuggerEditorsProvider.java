@@ -15,8 +15,8 @@ import org.intellij.lang.xpath.XPathFileType;
 import org.intellij.lang.xpath.xslt.impl.XsltChecker;
 import org.intellij.plugins.xsltDebugger.BreakpointContext;
 import org.intellij.plugins.xsltDebugger.rt.engine.Debugger;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class XsltDebuggerEditorsProvider extends XDebuggerEditorsProvider {
 
@@ -26,18 +26,18 @@ public class XsltDebuggerEditorsProvider extends XDebuggerEditorsProvider {
     myFileType = level == XsltChecker.LanguageLevel.V2 ? XPathFileType.XPATH2 : XPathFileType.XPATH;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public FileType getFileType() {
     return myFileType;
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public Document createDocument(@NotNull Project project,
-                                 @NotNull String text,
+  public Document createDocument(@Nonnull Project project,
+                                 @Nonnull String text,
                                  @Nullable XSourcePosition sourcePosition,
-                                 @NotNull EvaluationMode mode) {
+                                 @Nonnull EvaluationMode mode) {
     final PsiFile psiFile = PsiFileFactory.getInstance(project)
       .createFileFromText("XPathExpr." + myFileType.getDefaultExtension(), myFileType, text, LocalTimeCounter.currentTime(), true);
 

@@ -4,7 +4,7 @@ import com.intellij.diagnostic.logging.AdditionalTabComponent;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import org.intellij.plugins.xsltDebugger.ui.actions.OpenOutputAction;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.*;
 
@@ -21,7 +21,7 @@ public class OutputTabComponent extends AbstractTabComponent {
     myOutputActions = outputActions;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public JComponent getComponent() {
     return myOutputConsole;

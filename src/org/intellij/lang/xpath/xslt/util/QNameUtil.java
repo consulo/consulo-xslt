@@ -24,8 +24,8 @@ import com.intellij.psi.xml.XmlElement;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.util.PsiTreeUtil;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import javax.xml.namespace.QName;
 
@@ -61,7 +61,7 @@ public class QNameUtil {
         return isNamespaceDeclared(tag.getParentTag(), namespace);
     }
 
-    public static QName createQName(@NotNull String qname, @NotNull PsiElement context) {
+    public static QName createQName(@Nonnull String qname, @Nonnull PsiElement context) {
         final String[] strings = qname.split(":", 2);
         if (strings.length == 1) {
             return new QName(null, qname);
@@ -74,7 +74,7 @@ public class QNameUtil {
         return new QName(uri, strings[1], strings[0]);
     }
 
-    public static QName createQName(@NotNull XmlAttribute attribute) {
+    public static QName createQName(@Nonnull XmlAttribute attribute) {
         final String name = attribute.getName();
 
         if (name.indexOf(':') != -1) {
@@ -84,7 +84,7 @@ public class QNameUtil {
         }
     }
 
-    public static QName createQName(@NotNull XmlTag tag) {
+    public static QName createQName(@Nonnull XmlTag tag) {
         if (isNamespaceDeclared(tag, tag.getNamespace())) {
             return new QName(tag.getNamespace(), tag.getLocalName(), tag.getNamespacePrefix());
         } else {

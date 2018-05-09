@@ -13,14 +13,14 @@ import org.intellij.lang.xpath.xslt.util.ArgumentMatcher;
 
 import com.intellij.psi.xml.XmlTag;
 import com.intellij.psi.PsiElement;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 abstract class XsltTemplateInvocationBase extends XsltElementImpl implements XsltTemplateInvocation {
     public XsltTemplateInvocationBase(XmlTag target) {
         super(target);
     }
 
-    @NotNull
+    @Nonnull
     public XsltWithParam[] getArguments() {
         return convertArray(ResolveUtil.collect(new ArgumentMatcher(this) {
             @Override

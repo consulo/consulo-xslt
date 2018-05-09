@@ -15,13 +15,14 @@
  */
 package org.intellij.lang.xpath.xslt.psi.impl;
 
+import javax.annotation.Nullable;
+
 import org.intellij.lang.xpath.xslt.psi.XsltCallTemplate;
 import org.intellij.lang.xpath.xslt.psi.XsltTemplate;
 
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReference;
 import com.intellij.psi.xml.XmlTag;
-import org.jetbrains.annotations.Nullable;
 
 public class XsltCallTemplateImpl extends XsltTemplateInvocationBase implements XsltCallTemplate {
     public XsltCallTemplateImpl(XmlTag target) {

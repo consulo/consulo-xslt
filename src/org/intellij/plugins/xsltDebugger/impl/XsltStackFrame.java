@@ -3,6 +3,8 @@ package org.intellij.plugins.xsltDebugger.impl;
 import java.net.URI;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.swing.Icon;
 
 import org.intellij.plugins.xsltDebugger.VMPausedException;
@@ -10,8 +12,6 @@ import org.intellij.plugins.xsltDebugger.XsltDebuggerSession;
 import org.intellij.plugins.xsltDebugger.rt.engine.Debugger;
 import org.intellij.plugins.xsltDebugger.rt.engine.DebuggerStoppedException;
 import org.intellij.plugins.xsltDebugger.rt.engine.Value;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.ColoredTextContainer;
@@ -115,7 +115,7 @@ public class XsltStackFrame extends XStackFrame
 	}
 
 	@Override
-	public void computeChildren(@NotNull XCompositeNode node)
+	public void computeChildren(@Nonnull XCompositeNode node)
 	{
 		try
 		{
@@ -155,7 +155,7 @@ public class XsltStackFrame extends XStackFrame
 		}
 
 		@Override
-		public void computePresentation(@NotNull XValueNode node, @NotNull XValuePlace place)
+		public void computePresentation(@Nonnull XValueNode node, @Nonnull XValuePlace place)
 		{
 			final Debugger.Variable.Kind kind = myVariable.getKind();
 			Icon icon = null;
@@ -192,7 +192,7 @@ public class XsltStackFrame extends XStackFrame
 		}
 
 		@Override
-		public void computeChildren(@NotNull XCompositeNode node)
+		public void computeChildren(@Nonnull XCompositeNode node)
 		{
 			if(myVariable.getValue().getValue() instanceof Value.NodeSet)
 			{
@@ -214,7 +214,7 @@ public class XsltStackFrame extends XStackFrame
 		}
 
 		@Override
-		public void computeSourcePosition(@NotNull XNavigatable navigatable)
+		public void computeSourcePosition(@Nonnull XNavigatable navigatable)
 		{
 			navigatable.setSourcePosition(XsltSourcePosition.create(myVariable));
 		}
@@ -234,13 +234,13 @@ public class XsltStackFrame extends XStackFrame
 			}
 
 			@Override
-			public void computeSourcePosition(@NotNull XNavigatable navigatable)
+			public void computeSourcePosition(@Nonnull XNavigatable navigatable)
 			{
 				navigatable.setSourcePosition(XsltSourcePosition.create(myNode));
 			}
 
 			@Override
-			public void computePresentation(@NotNull XValueNode node, @NotNull XValuePlace place)
+			public void computePresentation(@Nonnull XValueNode node, @Nonnull XValuePlace place)
 			{
 				node.setPresentation(null, "node", myNode.myStringValue, false);
 			}
@@ -263,7 +263,7 @@ public class XsltStackFrame extends XStackFrame
 		}
 
 		@Override
-		public void evaluate(@NotNull String expression, XEvaluationCallback callback, @Nullable XSourcePosition expressionPosition)
+		public void evaluate(@Nonnull String expression, XEvaluationCallback callback, @Nullable XSourcePosition expressionPosition)
 		{
 			try
 			{

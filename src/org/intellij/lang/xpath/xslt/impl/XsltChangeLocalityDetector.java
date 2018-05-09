@@ -22,7 +22,7 @@ import com.intellij.psi.xml.XmlElementType;
 import com.intellij.psi.xml.XmlTag;
 import com.intellij.psi.xml.XmlToken;
 import org.intellij.lang.xpath.xslt.XsltSupport;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /*
 * Created by IntelliJ IDEA.
@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
 */
 public class XsltChangeLocalityDetector implements ChangeLocalityDetector {
   @Override
-  public PsiElement getChangeHighlightingDirtyScopeFor(@NotNull PsiElement changedElement) {
+  public PsiElement getChangeHighlightingDirtyScopeFor(@Nonnull PsiElement changedElement) {
     try {
       if (changedElement instanceof XmlToken && changedElement.getNode().getElementType() == XmlElementType.XML_ATTRIBUTE_VALUE_TOKEN) {
         final PsiElement grandParent = changedElement.getParent().getParent();

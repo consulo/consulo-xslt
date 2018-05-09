@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.xpath.xslt.validation.inspections;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInspection.ProblemsHolder;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.XmlElementVisitor;
@@ -26,25 +28,24 @@ import org.intellij.lang.xpath.xslt.psi.XsltVariable;
 import org.intellij.lang.xpath.xslt.validation.XsltValidator;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
 public class UnusedElementInspection extends XsltInspection {
 
     @Nls
-    @NotNull
+    @Nonnull
     public String getDisplayName() {
         return "Unused Variable/Parameter";
     }
 
     @NonNls
-    @NotNull
+    @Nonnull
     public String getShortName() {
         return "XsltUnusedDeclaration";
     }
 
     @Override
-    @NotNull
-    public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+    @Nonnull
+    public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
         return new MyVisitor(holder);
     }
 

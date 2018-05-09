@@ -31,8 +31,8 @@ import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.psi.XsltFunction;
 import org.intellij.lang.xpath.xslt.util.QNameUtil;
 import org.intellij.lang.xpath.xslt.util.XsltCodeInsightUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import javax.xml.namespace.QName;
 
@@ -43,7 +43,7 @@ import javax.xml.namespace.QName;
 */
 public class XsltFunctionImpl extends XsltElementImpl implements XsltFunction, ItemPresentation {
   private static final NotNullFunction<XmlTag,Parameter> PARAM_MAPPER = new NotNullFunction<XmlTag, Parameter>() {
-    @NotNull
+    @Nonnull
     @Override
     public Parameter fun(XmlTag param) {
       final XPathType type = XsltCodeInsightUtil.getDeclaredType(param);
@@ -96,7 +96,7 @@ public class XsltFunctionImpl extends XsltElementImpl implements XsltFunction, I
   }
 
   @Override
-  public PsiElement setName(@NotNull String name) throws IncorrectOperationException {
+  public PsiElement setName(@Nonnull String name) throws IncorrectOperationException {
     return super.setName(getQName().getPrefix() + ":" + name);
   }
 
@@ -107,13 +107,13 @@ public class XsltFunctionImpl extends XsltElementImpl implements XsltFunction, I
             ": " + function.getReturnType().getName() : null;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public Parameter[] getParameters() {
     return getFunction().getParameters();
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public XPathType getReturnType() {
     return getFunction().getReturnType();
@@ -124,7 +124,7 @@ public class XsltFunctionImpl extends XsltElementImpl implements XsltFunction, I
     return getFunction().getMinArity();
   }
 
-  public void accept(@NotNull XPathElementVisitor visitor) {
+  public void accept(@Nonnull XPathElementVisitor visitor) {
     visitor.visitXPathFunction(this);
   }
 }

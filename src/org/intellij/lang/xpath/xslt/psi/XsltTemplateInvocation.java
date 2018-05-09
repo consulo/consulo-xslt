@@ -7,9 +7,9 @@
  */
 package org.intellij.lang.xpath.xslt.psi;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public interface XsltTemplateInvocation extends XsltElement {
-    @NotNull
+    @Nonnull
     XsltWithParam[] getArguments();
 }

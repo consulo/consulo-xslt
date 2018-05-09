@@ -23,7 +23,7 @@ import org.intellij.lang.xpath.xslt.psi.*;
 import org.intellij.lang.xpath.xslt.util.IncludeAwareMatcher;
 import org.intellij.lang.xpath.xslt.util.ParamMatcher;
 import org.intellij.lang.xpath.xslt.util.TemplateMatcher;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class XsltStylesheetImpl extends XsltElementImpl implements XsltStylesheet {
 
@@ -31,12 +31,12 @@ public class XsltStylesheetImpl extends XsltElementImpl implements XsltStyleshee
     super(target);
   }
 
-  @NotNull
+  @Nonnull
   public XsltParameter[] getParameters() {
     return convertArray(ResolveUtil.collect(new ParamMatcher(getTag(), null)), XsltParameter.class);
   }
 
-  @NotNull
+  @Nonnull
   public XsltVariable[] getVariables() {
     return convertArray(ResolveUtil.collect(new ParamMatcher(getTag(), null) {
       protected boolean isApplicable(XmlTag tag) {
@@ -45,13 +45,13 @@ public class XsltStylesheetImpl extends XsltElementImpl implements XsltStyleshee
     }), XsltVariable.class);
   }
 
-  @NotNull
+  @Nonnull
   public XsltTemplate[] getTemplates() {
     final XmlDocument document = PsiTreeUtil.getParentOfType(getTag(), XmlDocument.class);
     return convertArray(ResolveUtil.collect(new TemplateMatcher(document)), XsltTemplate.class);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public XsltFunction[] getFunctions() {
     final XmlDocument document = PsiTreeUtil.getParentOfType(getTag(), XmlDocument.class);

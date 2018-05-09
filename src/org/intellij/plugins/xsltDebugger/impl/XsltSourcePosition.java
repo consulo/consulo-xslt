@@ -7,8 +7,8 @@ import com.intellij.pom.Navigatable;
 import com.intellij.xdebugger.XDebuggerUtil;
 import com.intellij.xdebugger.XSourcePosition;
 import org.intellij.plugins.xsltDebugger.rt.engine.Debugger;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.net.URI;
 
@@ -46,15 +46,15 @@ public class XsltSourcePosition implements XSourcePosition {
     return myPosition.getOffset();
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public VirtualFile getFile() {
     return myPosition.getFile();
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public Navigatable createNavigatable(@NotNull Project project) {
+  public Navigatable createNavigatable(@Nonnull Project project) {
     return myPosition.createNavigatable(project);
   }
 

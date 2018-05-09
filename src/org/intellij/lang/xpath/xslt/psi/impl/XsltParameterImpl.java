@@ -26,8 +26,8 @@ import org.intellij.lang.xpath.xslt.psi.XsltElementFactory;
 import org.intellij.lang.xpath.xslt.psi.XsltParameter;
 import org.intellij.lang.xpath.xslt.psi.XsltTemplate;
 import org.intellij.lang.xpath.xslt.util.XsltCodeInsightUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class XsltParameterImpl extends XsltVariableImpl implements XsltParameter {
     XsltParameterImpl(XmlTag attribute) {
@@ -57,7 +57,7 @@ public class XsltParameterImpl extends XsltVariableImpl implements XsltParameter
         return "XsltParam: " + getName();
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public SearchScope getLocalUseScope() {
         final XmlTag tag = getTag();
@@ -79,7 +79,7 @@ public class XsltParameterImpl extends XsltVariableImpl implements XsltParameter
         return new LocalSearchScope(file);
     }
 
-    public static XsltParameter getInstance(@NotNull XmlTag target) {
+    public static XsltParameter getInstance(@Nonnull XmlTag target) {
         return XsltElementFactory.getInstance().wrapElement(target, XsltParameter.class);
     }
 }

@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.javaee.ExternalResourceManager;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.PathManager;
@@ -53,7 +53,7 @@ public abstract class DownloadManager
 		new File(myResourcePath).mkdirs();
 	}
 
-	public void fetch(@NotNull final String location) throws DownloadException
+	public void fetch(@Nonnull final String location) throws DownloadException
 	{
 		if(resourceManager.getResourceLocation(location, myProject) != location)
 		{
@@ -68,7 +68,7 @@ public abstract class DownloadManager
 			file = HttpRequests.request(location).connect(new HttpRequests.RequestProcessor<File>()
 			{
 				@Override
-				public File process(@NotNull HttpRequests.Request request) throws IOException
+				public File process(@Nonnull HttpRequests.Request request) throws IOException
 				{
 					String name = Integer.toHexString(System.identityHashCode(this)) + "_" +
 							Integer.toHexString(location.hashCode()) + "_" +

@@ -15,19 +15,20 @@
  */
 package org.intellij.lang.xpath.xslt.util;
 
+import javax.annotation.Nonnull;
+
 import org.intellij.lang.xpath.xslt.psi.impl.ResolveUtil;
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.psi.XsltTemplateInvocation;
 
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.xml.XmlTag;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nullable;
 
 public class ArgumentMatcher implements ResolveUtil.Matcher {
     private final XsltTemplateInvocation myCall;
 
-    public ArgumentMatcher(@NotNull XsltTemplateInvocation call) {
+    public ArgumentMatcher(@Nonnull XsltTemplateInvocation call) {
         myCall = call;
     }
 

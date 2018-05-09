@@ -39,8 +39,8 @@ import org.intellij.lang.xpath.xslt.psi.XsltElementFactory;
 import org.intellij.lang.xpath.xslt.psi.XsltFunction;
 import org.intellij.lang.xpath.xslt.psi.XsltStylesheet;
 import org.intellij.lang.xpath.xslt.util.XsltCodeInsightUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import javax.xml.namespace.QName;
 import java.util.Collection;
@@ -53,11 +53,11 @@ public class Xslt2ContextProvider extends XsltContextProviderBase {
 
   private static final Key<ParameterizedCachedValue<Map<Pair<QName,Integer>,Function>,XmlFile>> FUNCTIONS = Key.create("XSLT_FUNCTIONS");
 
-  protected Xslt2ContextProvider(@NotNull XmlElement contextElement) {
+  protected Xslt2ContextProvider(@Nonnull XmlElement contextElement) {
     super(contextElement);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public ContextType getContextType() {
     return TYPE;
@@ -118,7 +118,7 @@ public class Xslt2ContextProvider extends XsltContextProviderBase {
   };
 
   @Override
-  @NotNull
+  @Nonnull
   public FunctionContext createFunctionContext() {
     final XmlElement contextElement = getContextElement();
     return contextElement != null && contextElement.isValid() ?

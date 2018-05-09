@@ -15,27 +15,28 @@
  */
 package org.intellij.lang.xpath.xslt.context;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.psi.xml.XmlElement;
 import org.intellij.lang.xpath.context.ContextType;
 import org.intellij.lang.xpath.context.XPathVersion;
 import org.intellij.lang.xpath.context.functions.FunctionContext;
-import org.jetbrains.annotations.NotNull;
 
 public class XsltContextProvider extends XsltContextProviderBase {
   public static final ContextType TYPE = ContextType.lookupOrCreate("XSLT", XPathVersion.V1);
 
-  protected XsltContextProvider(@NotNull XmlElement contextElement) {
+  protected XsltContextProvider(@Nonnull XmlElement contextElement) {
     super(contextElement);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public ContextType getContextType() {
     return TYPE;
   }
 
   @Override
-  @NotNull
+  @Nonnull
   public FunctionContext createFunctionContext() {
     return XsltFunctionContext.getInstance();
   }

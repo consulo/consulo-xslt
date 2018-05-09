@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.xpath.xslt.context;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.Language;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.util.PsiTreeUtil;
@@ -24,7 +26,6 @@ import org.intellij.lang.xpath.XPathFile;
 import org.intellij.lang.xpath.context.ContextProvider;
 import org.intellij.lang.xpath.context.ContextProviderExtension;
 import org.intellij.lang.xpath.xslt.XsltSupport;
-import org.jetbrains.annotations.NotNull;
 
 /*
 * Created by IntelliJ IDEA.
@@ -42,7 +43,7 @@ public abstract class XsltContextProviderExtensionBase extends ContextProviderEx
 
   protected abstract boolean acceptsLanguage(Language language);
 
-  @NotNull
+  @Nonnull
   public ContextProvider getContextProvider(XPathFile file) {
     final XmlElement xmlElement = (XmlElement)file.getContext();
     assert xmlElement != null;

@@ -24,7 +24,7 @@ import com.intellij.psi.xml.XmlTag;
 import com.intellij.util.containers.ContainerUtil;
 import org.intellij.lang.xpath.xslt.psi.impl.ResolveUtil;
 import org.intellij.lang.xpath.xslt.XsltSupport;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.Set;
 
@@ -96,7 +96,7 @@ public abstract class ElementProcessor<T extends PsiElement> implements ResolveU
         myInclude++;
         try {
             rootTag.processElements(new PsiElementProcessor() {
-                public boolean execute(@NotNull PsiElement element) {
+                public boolean execute(@Nonnull PsiElement element) {
                     if (element instanceof XmlTag) {
                         return process((XmlTag)element);
                     }

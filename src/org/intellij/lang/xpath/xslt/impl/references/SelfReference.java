@@ -23,8 +23,8 @@ import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.IncorrectOperationException;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 
 class SelfReference implements PsiReference {
   private final XmlAttributeValue myValue;
@@ -54,7 +54,7 @@ class SelfReference implements PsiReference {
     return myValue.isValid() ? myTarget : null;
   }
 
-  @NotNull
+  @Nonnull
   public String getCanonicalText() {
     return myValue.getText();
   }
@@ -63,7 +63,7 @@ class SelfReference implements PsiReference {
     return myValue;
   }
 
-  public PsiElement bindToElement(@NotNull PsiElement element) throws IncorrectOperationException {
+  public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException {
     return myValue;
   }
 
@@ -71,7 +71,7 @@ class SelfReference implements PsiReference {
     return false;
   }
 
-  @NotNull
+  @Nonnull
   public Object[] getVariants() {
     return ArrayUtil.EMPTY_OBJECT_ARRAY;
   }

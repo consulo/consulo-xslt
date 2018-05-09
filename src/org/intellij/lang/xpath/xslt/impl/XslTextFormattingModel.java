@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.xpath.xslt.impl;
 
+import javax.annotation.Nonnull;
+
 import org.intellij.lang.xpath.xslt.XsltSupport;
 
 import com.intellij.formatting.*;
@@ -24,7 +26,6 @@ import com.intellij.psi.formatter.xml.XmlBlock;
 import com.intellij.psi.formatter.xml.XmlPolicy;
 import com.intellij.psi.xml.XmlTag;
 import com.intellij.lang.ASTNode;
-import org.jetbrains.annotations.NotNull;
 
 class XslTextFormattingModel implements FormattingModel {
     private final FormattingModel myModel;
@@ -69,12 +70,12 @@ class XslTextFormattingModel implements FormattingModel {
         return "value-of".equals(xmlTag.getLocalName()) && XsltSupport.XSLT_NS.equals(xmlTag.getNamespace());
     }
 
-    @NotNull
+    @Nonnull
     public Block getRootBlock() {
         return myRootBlock;
     }
 
-    @NotNull
+    @Nonnull
     public FormattingDocumentModel getDocumentModel() {
         return myModel.getDocumentModel();
     }

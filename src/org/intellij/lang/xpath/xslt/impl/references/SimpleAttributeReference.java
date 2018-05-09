@@ -15,6 +15,9 @@
  */
 package org.intellij.lang.xpath.xslt.impl.references;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.openapi.util.Comparing;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.*;
@@ -22,8 +25,6 @@ import com.intellij.psi.impl.source.resolve.ResolveCache;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.util.IncorrectOperationException;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 abstract class SimpleAttributeReference implements PsiReference {
     protected final XmlAttribute myAttribute;
@@ -32,7 +33,7 @@ abstract class SimpleAttributeReference implements PsiReference {
         myAttribute = attribute;
     }
 
-    @NotNull
+    @Nonnull
     public String getCanonicalText() {
         return getTextRange().substring(myAttribute.getValue());
     }
@@ -60,7 +61,7 @@ abstract class SimpleAttributeReference implements PsiReference {
         }
     }
 
-    public PsiElement bindToElement(@NotNull PsiElement element) throws IncorrectOperationException {
+    public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException {
         throw new UnsupportedOperationException();
     }
 
@@ -75,7 +76,7 @@ abstract class SimpleAttributeReference implements PsiReference {
     public final PsiElement resolve() {
         return ResolveCache.getInstance(myAttribute.getProject()).resolveWithCaching(this, new ResolveCache.Resolver() {
             @Nullable
-            public PsiElement resolve(@NotNull PsiReference psiReference, boolean b) {
+            public PsiElement resolve(@Nonnull PsiReference psiReference, boolean b) {
                 return resolveImpl();
             }
         }, false, false);
@@ -84,6 +85,6 @@ abstract class SimpleAttributeReference implements PsiReference {
     @Nullable
     protected abstract PsiElement resolveImpl();
 
-    @NotNull
+    @Nonnull
     protected abstract TextRange getTextRange();
 }

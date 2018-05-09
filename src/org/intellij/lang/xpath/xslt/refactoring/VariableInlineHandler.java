@@ -58,8 +58,8 @@ import org.intellij.lang.xpath.xslt.psi.XsltParameter;
 import org.intellij.lang.xpath.xslt.psi.XsltVariable;
 import org.intellij.lang.xpath.xslt.psi.impl.XsltLanguage;
 import org.intellij.lang.xpath.xslt.util.XsltCodeInsightUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.awt.*;
 import java.text.MessageFormat;
@@ -108,7 +108,7 @@ public class VariableInlineHandler extends InlineActionHandler {
     }
   }
 
-  public static void invoke(@NotNull final XPathVariable variable, Editor editor) {
+  public static void invoke(@Nonnull final XPathVariable variable, Editor editor) {
 
     final String type = LanguageFindUsages.INSTANCE.forLanguage(variable.getLanguage()).getType(variable);
     final Project project = variable.getProject();

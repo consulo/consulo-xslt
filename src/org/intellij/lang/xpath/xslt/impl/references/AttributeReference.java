@@ -16,12 +16,13 @@
 
 package org.intellij.lang.xpath.xslt.impl.references;
 
+import javax.annotation.Nonnull;
+
 import org.intellij.lang.xpath.xslt.psi.impl.ResolveUtil;
 
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.xml.XmlAttribute;
-import org.jetbrains.annotations.NotNull;
 
 class AttributeReference extends SimpleAttributeReference {
     private final boolean mySoft;
@@ -33,13 +34,13 @@ class AttributeReference extends SimpleAttributeReference {
         mySoft = soft;
     }
 
-    @NotNull
+    @Nonnull
     public Object[] getVariants() {
         return ResolveUtil.collect(myMatcher.variantMatcher());
     }
 
     @Override
-    @NotNull
+    @Nonnull
     protected TextRange getTextRange() {
         return TextRange.from(0, myAttribute.getValue().length());
     }

@@ -29,7 +29,7 @@ import org.intellij.lang.xpath.xslt.run.XsltRunnerExtension;
 import org.intellij.plugins.xsltDebugger.ui.OutputTabComponent;
 import org.intellij.plugins.xsltDebugger.ui.StructureTabComponent;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 import com.intellij.diagnostic.logging.AdditionalTabComponent;
 import com.intellij.diagnostic.logging.LogConsoleManagerBase;
 import com.intellij.execution.CantRunException;

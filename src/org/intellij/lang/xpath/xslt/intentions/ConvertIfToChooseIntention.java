@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.xpath.xslt.intentions;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInsight.intention.IntentionAction;
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.editor.Editor;
@@ -27,20 +29,19 @@ import com.intellij.psi.xml.XmlChildRole;
 import com.intellij.psi.xml.XmlTag;
 import com.intellij.util.IncorrectOperationException;
 import org.intellij.lang.xpath.xslt.XsltSupport;
-import org.jetbrains.annotations.NotNull;
 
 public class ConvertIfToChooseIntention implements IntentionAction {
-    @NotNull
+    @Nonnull
     public String getFamilyName() {
         return "Convert if to choose";
     }
 
-    @NotNull
+    @Nonnull
     public String getText() {
         return "Convert xsl:if to xsl:choose";
     }
 
-    public void invoke(@NotNull Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
+    public void invoke(@Nonnull Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
         final int offset = editor.getCaretModel().getOffset();
         final PsiElement element = file.findElementAt(offset);
         assert element != null;
@@ -64,7 +65,7 @@ public class ConvertIfToChooseIntention implements IntentionAction {
       CodeStyleManager.getInstance(tag.getManager().getProject()).reformat(tag.replace(chooseTag));
     }
 
-    public boolean isAvailable(@NotNull Project project, Editor editor, PsiFile file) {
+    public boolean isAvailable(@Nonnull Project project, Editor editor, PsiFile file) {
         if (!XsltSupport.isXsltFile(file)) return false;
 
         final int offset = editor.getCaretModel().getOffset();

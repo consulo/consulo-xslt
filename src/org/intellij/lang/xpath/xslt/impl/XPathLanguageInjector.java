@@ -19,8 +19,8 @@ import java.util.List;
 
 import org.intellij.lang.xpath.XPathTokenTypes;
 import org.intellij.lang.xpath.xslt.XsltSupport;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.Language;
 import com.intellij.lang.LanguageParserDefinitions;
@@ -81,7 +81,7 @@ public class XPathLanguageInjector implements MultiHostInjector
 		}
 	}
 
-	@NotNull
+	@Nonnull
 	private synchronized TextRange[] getInjectionRanges(final XmlAttribute attribute, XsltChecker.LanguageLevel languageLevel)
 	{
 		final TextRange[] cachedFiles = getCachedRanges(attribute);
@@ -157,7 +157,7 @@ public class XPathLanguageInjector implements MultiHostInjector
 	}
 
 	@Override
-	public void injectLanguages(@NotNull MultiHostRegistrar registrar, @NotNull PsiElement context)
+	public void injectLanguages(@Nonnull MultiHostRegistrar registrar, @Nonnull PsiElement context)
 	{
 		final XmlAttribute attribute = (XmlAttribute) context;
 		if(!XsltSupport.isXPathAttribute(attribute))

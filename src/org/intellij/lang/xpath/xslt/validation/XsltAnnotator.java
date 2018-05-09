@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.xpath.xslt.validation;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.annotation.Annotation;
 import com.intellij.lang.annotation.AnnotationHolder;
@@ -31,13 +33,12 @@ import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.context.XsltContextProviderBase;
 import org.intellij.lang.xpath.xslt.quickfix.ConvertToEntityFix;
 import org.intellij.lang.xpath.xslt.quickfix.FlipOperandsFix;
-import org.jetbrains.annotations.NotNull;
 
 public class XsltAnnotator extends XPath2ElementVisitor implements Annotator {
 
   private AnnotationHolder myHolder;
 
-  public void annotate(@NotNull PsiElement psiElement, @NotNull AnnotationHolder holder) {
+  public void annotate(@Nonnull PsiElement psiElement, @Nonnull AnnotationHolder holder) {
     final boolean isXslt = ContextProvider.getContextProvider(psiElement) instanceof XsltContextProviderBase;
     if (isXslt) {
       try {

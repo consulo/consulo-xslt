@@ -36,8 +36,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.associations.FileAssociationsManager;
 import org.intellij.lang.xpath.xslt.associations.impl.AnyXMLDescriptor;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.application.ApplicationManager;
@@ -58,7 +58,6 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.projectRoots.JavaSdkType;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.projectRoots.SdkTable;
-import com.intellij.openapi.projectRoots.SdkType;
 import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.TextComponentAccessor;
@@ -622,7 +621,7 @@ class XsltRunSettingsEditor extends SettingsEditor<XsltRunConfiguration> {
     myEditor.applyTo(s);
   }
 
-  @NotNull
+  @Nonnull
   protected JComponent createEditor() {
     myEditor = new Editor(myProject);
     return myEditor.getComponent();

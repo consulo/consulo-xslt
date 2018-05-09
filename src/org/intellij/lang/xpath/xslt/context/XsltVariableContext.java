@@ -38,8 +38,8 @@ import org.intellij.lang.xpath.xslt.quickfix.CreateParameterFix;
 import org.intellij.lang.xpath.xslt.quickfix.CreateVariableFix;
 import org.intellij.lang.xpath.xslt.util.ElementProcessor;
 import org.intellij.lang.xpath.xslt.util.XsltCodeInsightUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,12 +49,12 @@ public class XsltVariableContext implements VariableContext<XsltVariable> {
     
     private final ResolveCache.Resolver RESOLVER = new ResolveCache.Resolver() {
         @Nullable
-        public PsiElement resolve(@NotNull PsiReference psiReference, boolean incompleteCode) {
+        public PsiElement resolve(@Nonnull PsiReference psiReference, boolean incompleteCode) {
             return resolveInner((XPathVariableReference)psiReference);
         }
     };
 
-    @NotNull
+    @Nonnull
     public XsltVariable[] getVariablesInScope(XPathElement element) {
         final XmlTag context = getContextTagImpl(element);
         final VariantsProcessor processor = new VariantsProcessor(context);
@@ -107,7 +107,7 @@ public class XsltVariableContext implements VariableContext<XsltVariable> {
         return PsiTreeUtil.getContextOfType(element, XmlTag.class, true);
     }
 
-    @NotNull
+    @Nonnull
     public IntentionAction[] getUnresolvedVariableFixes(XPathVariableReference reference) {
         return new IntentionAction[] {
                 new CreateVariableFix(reference),

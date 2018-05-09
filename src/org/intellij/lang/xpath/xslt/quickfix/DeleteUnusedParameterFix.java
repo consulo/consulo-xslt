@@ -25,7 +25,7 @@ import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.psi.XsltParameter;
 import org.intellij.lang.xpath.xslt.psi.XsltTemplate;
 import org.intellij.lang.xpath.xslt.util.XsltCodeInsightUtil;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class DeleteUnusedParameterFix extends DeleteUnusedElementBase<XsltParameter> {
 
@@ -37,7 +37,7 @@ public class DeleteUnusedParameterFix extends DeleteUnusedElementBase<XsltParame
         return "Parameter";
     }
 
-    protected void deleteElement(@NotNull XsltParameter obj) throws IncorrectOperationException {
+    protected void deleteElement(@Nonnull XsltParameter obj) throws IncorrectOperationException {
         final XsltTemplate template = XsltCodeInsightUtil.getTemplate(obj.getTag(), false);
         if (template == null || template.getMatchExpression() == null) {
             final SearchScope searchScope = obj.getResolveScope();

@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.xpath.xslt.refactoring;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
@@ -24,12 +26,12 @@ import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.refactoring.RefactoringActionHandler;
 import com.intellij.refactoring.util.CommonRefactoringUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 public abstract class XsltRefactoringActionBase implements RefactoringActionHandler {
 
-    public void invoke(@NotNull Project project, Editor editor, PsiFile file, DataContext dataContext) {
+    public void invoke(@Nonnull Project project, Editor editor, PsiFile file, DataContext dataContext) {
         final int offset = editor.getCaretModel().getOffset();
 
         final XmlAttribute context = PsiTreeUtil.getContextOfType(file, XmlAttribute.class, true);
@@ -44,7 +46,7 @@ public abstract class XsltRefactoringActionBase implements RefactoringActionHand
                 (message != null ? message : getRefactoringName() + " is not available in the current context."), "XSLT - " + getRefactoringName(), null);
     }
 
-    public void invoke(@NotNull Project project, @NotNull PsiElement[] elements, DataContext dataContext) {
+    public void invoke(@Nonnull Project project, @Nonnull PsiElement[] elements, DataContext dataContext) {
         throw new UnsupportedOperationException();
     }
 

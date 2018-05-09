@@ -16,7 +16,7 @@
 package org.intellij.lang.xpath.xslt.impl;
 
 import org.intellij.lang.xpath.xslt.XsltSupport;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import consulo.ide.IconDescriptor;
@@ -30,7 +30,7 @@ import icons.XsltIcons;
 public class XsltIconDescriptorUpdater implements IconDescriptorUpdater
 {
   @Override
-  public void updateIcon(@NotNull IconDescriptor iconDescriptor, @NotNull PsiElement element, int flags) {
+  public void updateIcon(@Nonnull IconDescriptor iconDescriptor, @Nonnull PsiElement element, int flags) {
     if (element instanceof PsiFile && XsltSupport.isXsltFile((PsiFile) element)) {
       iconDescriptor.addLayerIcon(XsltIcons.Xslt_filetype_overlay);
     }

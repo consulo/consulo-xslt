@@ -21,8 +21,8 @@ import com.intellij.codeInspection.LocalInspectionTool;
 import com.intellij.codeInspection.SuppressIntentionAction;
 import com.intellij.psi.PsiElement;
 import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.List;
 
@@ -36,12 +36,12 @@ public abstract class XsltInspection extends LocalInspectionTool implements Cust
         return actions.toArray(new SuppressInspectionAction[actions.size()]);
     }
 
-    public boolean isSuppressedFor(@NotNull PsiElement element) {
+    public boolean isSuppressedFor(@Nonnull PsiElement element) {
         return InspectionUtil.isSuppressed(this, element);
     }
 
     @Nls
-    @NotNull
+    @Nonnull
     public String getGroupDisplayName() {
         return "XSLT";
     }

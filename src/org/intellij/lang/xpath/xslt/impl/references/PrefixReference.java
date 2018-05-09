@@ -15,14 +15,16 @@
  */
 package org.intellij.lang.xpath.xslt.impl.references;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInsight.daemon.EmptyResolveMessageProvider;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.util.ArrayUtil;
 import org.intellij.lang.xpath.xslt.context.XsltNamespaceContext;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 public class PrefixReference extends SimpleAttributeReference implements EmptyResolveMessageProvider {
 
@@ -52,14 +54,14 @@ public class PrefixReference extends SimpleAttributeReference implements EmptyRe
     return false;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public Object[] getVariants() {
     return ArrayUtil.EMPTY_OBJECT_ARRAY;
   }
 
   @Override
-  @NotNull
+  @Nonnull
   protected TextRange getTextRange() {
     return myRange;
   }
@@ -70,7 +72,7 @@ public class PrefixReference extends SimpleAttributeReference implements EmptyRe
     return XsltNamespaceContext.resolvePrefix(getCanonicalText(), myAttribute);
   }
 
-  @NotNull
+  @Nonnull
   public String getUnresolvedMessagePattern() {
     return "Undeclared namespace prefix ''{0}''";
   }

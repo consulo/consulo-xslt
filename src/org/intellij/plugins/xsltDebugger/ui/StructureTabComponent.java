@@ -8,7 +8,7 @@ import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.util.Key;
 import com.intellij.ui.ScrollPaneFactory;
 import org.intellij.plugins.xsltDebugger.ui.actions.HideWhitespaceAction;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.*;
 
@@ -52,7 +52,7 @@ public class StructureTabComponent extends AbstractTabComponent {
     return process.getUserData(KEY);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public JComponent getComponent() {
     return myComponent;

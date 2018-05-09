@@ -24,8 +24,8 @@ import org.intellij.lang.xpath.xslt.psi.XsltTemplate;
 import org.intellij.lang.xpath.xslt.util.ParamMatcher;
 import org.intellij.lang.xpath.xslt.util.QNameUtil;
 import org.intellij.lang.xpath.xslt.util.XsltCodeInsightUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import javax.xml.namespace.QName;
 
@@ -65,7 +65,7 @@ public class XsltTemplateImpl extends XsltElementImpl implements XsltTemplate {
         return "XsltTemplate: " + getName();
     }
 
-    @NotNull
+    @Nonnull
     public XsltParameter[] getParameters() {
         final PsiElement[] elements = ResolveUtil.collect(new ParamMatcher(getTag(), null));
 

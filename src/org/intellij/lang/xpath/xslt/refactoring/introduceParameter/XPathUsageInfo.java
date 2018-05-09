@@ -22,7 +22,7 @@ import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.usageView.UsageInfo;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 class XPathUsageInfo extends UsageInfo {
     private final XPathExpression myExpression;

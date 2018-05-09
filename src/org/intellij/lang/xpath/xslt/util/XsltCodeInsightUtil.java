@@ -34,8 +34,8 @@ import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.psi.XsltElement;
 import org.intellij.lang.xpath.xslt.psi.XsltElementFactory;
 import org.intellij.lang.xpath.xslt.psi.XsltTemplate;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.*;
 
@@ -55,7 +55,7 @@ public class XsltCodeInsightUtil {
     }
 
     @Nullable
-    public static XmlTag getTemplateTag(@NotNull PsiElement location, boolean isExpression, boolean requireName) {
+    public static XmlTag getTemplateTag(@Nonnull PsiElement location, boolean isExpression, boolean requireName) {
         PsiElement p = isExpression ? location.getContainingFile().getContext() : location;
         while ((p = PsiTreeUtil.getParentOfType(p, XmlTag.class)) != null) {
             final XmlTag _p = ((XmlTag)p);
@@ -65,21 +65,21 @@ public class XsltCodeInsightUtil {
     }
 
     @Nullable
-    public static XmlTag getTemplateTag(@NotNull PsiElement location, boolean isExpression) {
+    public static XmlTag getTemplateTag(@Nonnull PsiElement location, boolean isExpression) {
         return getTemplateTag(location, isExpression, false);
     }
 
     @Nullable
-    public static XsltTemplate getTemplate(@NotNull PsiElement location, boolean isExpression) {
+    public static XsltTemplate getTemplate(@Nonnull PsiElement location, boolean isExpression) {
         final XmlTag templateTag = getTemplateTag(location, isExpression);
         return templateTag != null ? XsltElementFactory.getInstance().wrapElement(templateTag, XsltTemplate.class) : null;
     }
 
     @Nullable
-    public static PsiElement findFirstRealTagChild(@NotNull XmlTag xmlTag) {
+    public static PsiElement findFirstRealTagChild(@Nonnull XmlTag xmlTag) {
         final PsiElement[] child = new PsiElement[1];
         xmlTag.processElements(new PsiElementProcessor() {
-            public boolean execute(@NotNull PsiElement element) {
+            public boolean execute(@Nonnull PsiElement element) {
                 if (element instanceof XmlToken) {
                     if (((XmlToken)element).getTokenType() == XmlTokenType.XML_TAG_END) {
                         child[0] = element.getNextSibling();
@@ -121,7 +121,7 @@ public class XsltCodeInsightUtil {
         return list.size() > 0 ? list.get(list.size() - 1) : null;
     }
 
-  @NotNull
+  @Nonnull
     public static TextRange getRangeInsideHostingFile(XPathElement expr) {
         final PsiLanguageInjectionHost host = PsiTreeUtil.getContextOfType(expr, PsiLanguageInjectionHost.class, true);
         assert host != null;
@@ -136,7 +136,7 @@ public class XsltCodeInsightUtil {
         return null;
     }
 
-    @NotNull
+    @Nonnull
     public static TextRange getRangeInsideHost(XPathElement expr) {
         final PsiLanguageInjectionHost host = PsiTreeUtil.getContextOfType(expr, PsiLanguageInjectionHost.class, true);
         assert host != null;
@@ -154,7 +154,7 @@ public class XsltCodeInsightUtil {
     public static XmlTag findLastWithParam(XmlTag templateTag) {
         final XmlTag[] lastParam = new XmlTag[1];
         templateTag.processElements(new PsiElementProcessor() {
-            public boolean execute(@NotNull PsiElement element) {
+            public boolean execute(@Nonnull PsiElement element) {
                 if (element instanceof XmlTag) {
                     if ("with-param".equals(((XmlTag)element).getLocalName())) {
                         lastParam[0] = (XmlTag)element;
@@ -248,14 +248,14 @@ public class XsltCodeInsightUtil {
         return template != null ? template.getNavigationElement() : tag.getParentTag();
     }
 
-    @NotNull
-    public static XmlDocument getDocument(@NotNull XmlElement element) {
+    @Nonnull
+    public static XmlDocument getDocument(@Nonnull XmlElement element) {
         final XmlDocument document = PsiTreeUtil.getParentOfType(element, XmlDocument.class, false);
         assert document != null;
         return document;
     }
 
-    public static XmlDocument getDocument(@NotNull XsltElement element) {
+    public static XmlDocument getDocument(@Nonnull XsltElement element) {
         return getDocument(element.getTag());
     }
 

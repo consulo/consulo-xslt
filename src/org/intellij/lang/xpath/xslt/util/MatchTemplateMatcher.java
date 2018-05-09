@@ -22,15 +22,16 @@ import org.intellij.lang.xpath.xslt.psi.XsltElementFactory;
 import com.intellij.psi.xml.XmlDocument;
 import com.intellij.psi.xml.XmlTag;
 
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
+import javax.annotation.Nullable;
 import javax.xml.namespace.QName;
 
 public class MatchTemplateMatcher extends TemplateMatcher {
-    protected final @Nullable QName myMode;
+    protected final @Nullable
+	QName myMode;
 
-    public MatchTemplateMatcher(@NotNull XmlDocument document, @Nullable QName mode) {
+    public MatchTemplateMatcher(@Nonnull XmlDocument document, @Nullable QName mode) {
         super(document);
         myMode = mode;
     }

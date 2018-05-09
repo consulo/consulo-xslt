@@ -12,8 +12,8 @@ import org.intellij.lang.xpath.completion.CompletionLists;
 import org.intellij.lang.xpath.xslt.context.XsltNamespaceContext;
 import org.intellij.lang.xpath.xslt.impl.references.PrefixReference;
 import org.intellij.lang.xpath.xslt.util.QNameUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.navigation.NavigationItem;
 import com.intellij.openapi.util.TextRange;
@@ -60,7 +60,7 @@ public class ImplicitModeElement extends LightElement implements PsiNamedElement
         return getModeRange().substring(myAttribute.getValue());
     }
 
-    public PsiElement setName(@NotNull String name) throws IncorrectOperationException {
+    public PsiElement setName(@Nonnull String name) throws IncorrectOperationException {
         // name is calculated dynamically from attached attribute. actual renaming is done by each reference
         return this;
     }
@@ -70,7 +70,7 @@ public class ImplicitModeElement extends LightElement implements PsiNamedElement
         return "Mode: " + getName();
     }
 
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
     }
 
     public PsiElement copy() {
@@ -145,7 +145,7 @@ public class ImplicitModeElement extends LightElement implements PsiNamedElement
         return qName != null ? qName.toString() : hasPrefix() ? getPrefix() + ":" + getName() : getName();
     }
 
-    @NotNull
+    @Nonnull
     @Override
     @SuppressWarnings({ "RawUseOfParameterizedType" })
     public PsiElement getNavigationElement() {
@@ -196,7 +196,7 @@ public class ImplicitModeElement extends LightElement implements PsiNamedElement
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public SearchScope getUseScope() {
         return myAttribute.getUseScope();
     }

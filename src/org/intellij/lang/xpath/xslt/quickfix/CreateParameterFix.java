@@ -15,11 +15,12 @@
  */
 package org.intellij.lang.xpath.xslt.quickfix;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.xml.XmlTag;
-import org.jetbrains.annotations.NotNull;
 
 import org.intellij.lang.xpath.psi.XPathVariableReference;
 import org.intellij.lang.xpath.xslt.util.XsltCodeInsightUtil;
@@ -31,7 +32,7 @@ public class CreateParameterFix extends AddParamBase {
         myReference = reference;
     }
 
-    @NotNull
+    @Nonnull
     public String getText() {
         return "Create Parameter '" + myReference.getReferencedName() + "'";
     }
@@ -44,7 +45,7 @@ public class CreateParameterFix extends AddParamBase {
         return XsltCodeInsightUtil.getTemplateTag(myReference, true);
     }
 
-    public boolean isAvailableImpl(@NotNull Project project, Editor editor, PsiFile file) {
+    public boolean isAvailableImpl(@Nonnull Project project, Editor editor, PsiFile file) {
         return myReference.isValid() && XsltCodeInsightUtil.getTemplateTag(myReference, true) != null;
     }
 }

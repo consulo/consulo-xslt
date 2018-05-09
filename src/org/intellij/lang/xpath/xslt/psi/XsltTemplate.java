@@ -18,13 +18,13 @@ package org.intellij.lang.xpath.xslt.psi;
 import org.intellij.lang.xpath.psi.XPathExpression;
 
 import com.intellij.psi.PsiNamedElement;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 
 import javax.xml.namespace.QName;
 
 public interface XsltTemplate extends PsiNamedElement, XsltNamedElement {
-    @NotNull
+    @Nonnull
     XsltParameter[] getParameters();
 
     @Nullable

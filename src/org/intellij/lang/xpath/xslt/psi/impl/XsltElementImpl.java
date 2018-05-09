@@ -21,6 +21,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
+import javax.annotation.Nonnull;
 import javax.swing.Icon;
 
 import org.intellij.lang.xpath.completion.CompletionLists;
@@ -31,8 +32,8 @@ import org.intellij.lang.xpath.psi.XPathElementVisitor;
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.psi.XsltElement;
 import org.intellij.lang.xpath.xslt.psi.XsltElementFactory;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.Language;
 import com.intellij.navigation.ItemPresentation;
@@ -53,7 +54,8 @@ import consulo.ide.IconDescriptorUpdaters;
 
 abstract class XsltElementImpl extends LightElement implements PsiElementNavigationItem, XsltElement, ItemPresentation {
 
-  protected final @NotNull XmlTag myElement;
+  protected final @Nonnull
+  XmlTag myElement;
   protected final XsltElementFactory myElementFactory;
 
   private final int myHashCode;
@@ -111,14 +113,14 @@ abstract class XsltElementImpl extends LightElement implements PsiElementNavigat
     return nameElement != null ? nameElement.getValue() : null;
   }
 
-  public PsiElement setName(@NotNull String name) throws IncorrectOperationException {
+  public PsiElement setName(@Nonnull String name) throws IncorrectOperationException {
     assert myElement.isValid();
 
     myElement.setAttribute("name", name);
     return this;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   @SuppressWarnings({"RawUseOfParameterizedType"})
   public PsiElement getNavigationElement() {
@@ -186,7 +188,7 @@ abstract class XsltElementImpl extends LightElement implements PsiElementNavigat
   }
 
   @Override
-  @NotNull
+  @Nonnull
   public Language getLanguage() {
     return XsltLanguage.INSTANCE;
   }
@@ -209,11 +211,11 @@ abstract class XsltElementImpl extends LightElement implements PsiElementNavigat
     return canNavigate();
   }
 
-  public void accept(@NotNull XPathElementVisitor visitor) {
+  public void accept(@Nonnull XPathElementVisitor visitor) {
     visitor.visitXPathElement((XPathElement)this);
   }
 
-  public void accept(@NotNull PsiElementVisitor visitor) {
+  public void accept(@Nonnull PsiElementVisitor visitor) {
     if (visitor instanceof XPathElementVisitor && this instanceof XPathElement) {
       accept((XPathElementVisitor)visitor);
     }
@@ -263,7 +265,7 @@ abstract class XsltElementImpl extends LightElement implements PsiElementNavigat
   }
 
   @Override
-  @NotNull
+  @Nonnull
   public PsiElement[] getChildren() {
     return myElement.getChildren(); // TODO: return XSLT objects
   }
@@ -281,7 +283,7 @@ abstract class XsltElementImpl extends LightElement implements PsiElementNavigat
   }
 
   @Override
-  @NotNull
+  @Nonnull
   public char[] textToCharArray() {
     final XmlAttributeValue nameElement = getNameElement();
     return nameElement != null ? nameElement.textToCharArray() : myElement.textToCharArray();
@@ -300,20 +302,20 @@ abstract class XsltElementImpl extends LightElement implements PsiElementNavigat
   }
 
   @Override
-  @NotNull
+  @Nonnull
   public PsiReference[] getReferences() {
     final XmlAttributeValue nameElement = getNameElement();
     return nameElement != null ? nameElement.getReferences() : myElement.getReferences();
   }
 
   @Override
-  public boolean textMatches(@NotNull CharSequence charSequence) {
+  public boolean textMatches(@Nonnull CharSequence charSequence) {
     final XmlAttributeValue nameElement = getNameElement();
     return nameElement != null ? nameElement.textMatches(charSequence) : myElement.textMatches(charSequence);
   }
 
   @Override
-  public boolean textMatches(@NotNull PsiElement psiElement) {
+  public boolean textMatches(@Nonnull PsiElement psiElement) {
     final XmlAttributeValue nameElement = getNameElement();
     return nameElement != null ? nameElement.textMatches(psiElement) : myElement.textMatches(psiElement);
   }

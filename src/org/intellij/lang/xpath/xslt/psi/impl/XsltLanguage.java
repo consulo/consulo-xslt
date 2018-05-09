@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.xpath.xslt.psi.impl;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.Language;
 import com.intellij.lang.LanguageRefactoringSupport;
 import com.intellij.lang.cacheBuilder.WordsScanner;
@@ -35,8 +37,8 @@ import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.psi.XsltParameter;
 import org.intellij.lang.xpath.xslt.psi.XsltTemplate;
 import org.intellij.lang.xpath.xslt.psi.XsltVariable;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 public class XsltLanguage extends Language {
     public static final String ID = "$XSLT";
@@ -65,17 +67,17 @@ public class XsltLanguage extends Language {
             return LanguageFindUsages.INSTANCE.forLanguage(XMLLanguage.INSTANCE).getWordsScanner();
         }
 
-        public boolean canFindUsagesFor(@NotNull PsiElement psiElement) {
+        public boolean canFindUsagesFor(@Nonnull PsiElement psiElement) {
             return psiElement instanceof PsiNamedElement;
         }
 
         @Nullable
-        public String getHelpId(@NotNull PsiElement psiElement) {
+        public String getHelpId(@Nonnull PsiElement psiElement) {
             return null;
         }
 
-        @NotNull
-        public String getType(@NotNull PsiElement element) {
+        @Nonnull
+        public String getType(@Nonnull PsiElement element) {
             if (element instanceof XsltParameter) {
                 return getParameterType((XsltParameter)element);
             }
@@ -98,8 +100,8 @@ public class XsltLanguage extends Language {
             return "parameter";
         }
 
-        @NotNull
-        public String getDescriptiveName(@NotNull PsiElement element) {
+        @Nonnull
+        public String getDescriptiveName(@Nonnull PsiElement element) {
             if (element instanceof PsiNamedElement) {
                 final String name = ((PsiNamedElement)element).getName();
                 if (name != null) return name;
@@ -107,8 +109,8 @@ public class XsltLanguage extends Language {
             return element.toString();
         }
 
-        @NotNull
-        public String getNodeText(@NotNull PsiElement element, boolean useFullName) {
+        @Nonnull
+        public String getNodeText(@Nonnull PsiElement element, boolean useFullName) {
             if (useFullName) {
                 if (element instanceof NavigationItem) {
                     final NavigationItem navigationItem = ((NavigationItem)element);

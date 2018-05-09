@@ -16,6 +16,9 @@
 
 package org.intellij.lang.xpath.xslt.intentions;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.codeInsight.intention.IntentionAction;
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.editor.Editor;
@@ -28,8 +31,6 @@ import com.intellij.psi.xml.XmlTag;
 import com.intellij.psi.xml.XmlText;
 import com.intellij.util.IncorrectOperationException;
 import org.intellij.lang.xpath.xslt.XsltSupport;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -37,17 +38,17 @@ import org.jetbrains.annotations.Nullable;
  * Date: 20.06.2007
  */
 public class InlineXslAttribute implements IntentionAction {
-    @NotNull
+    @Nonnull
     public String getText() {
         return "Replace with Attribute Value Template";
     }
 
-    @NotNull
+    @Nonnull
     public String getFamilyName() {
         return "Inline xsl:attribute";
     }
 
-    public boolean isAvailable(@NotNull Project project, Editor editor, PsiFile file) {
+    public boolean isAvailable(@Nonnull Project project, Editor editor, PsiFile file) {
         if (!XsltSupport.isXsltFile(file)) return false;
 
         final int offset = editor.getCaretModel().getOffset();
@@ -106,7 +107,7 @@ public class InlineXslAttribute implements IntentionAction {
         return true;
     }
 
-    public void invoke(@NotNull Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
+    public void invoke(@Nonnull Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
         final int offset = editor.getCaretModel().getOffset();
         final PsiElement element = file.findElementAt(offset);
       final XmlTag tag = PsiTreeUtil.getParentOfType(element, XmlTag.class, false);

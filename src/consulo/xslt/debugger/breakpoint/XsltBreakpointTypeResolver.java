@@ -1,9 +1,10 @@
 package consulo.xslt.debugger.breakpoint;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.plugins.xsltDebugger.XsltBreakpointType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import consulo.annotations.RequiredReadAction;
 import com.intellij.ide.highlighter.XmlFileType;
 import com.intellij.openapi.editor.Document;
@@ -25,7 +26,7 @@ public class XsltBreakpointTypeResolver implements XLineBreakpointTypeResolver
 	@Nullable
 	@Override
 	@RequiredReadAction
-	public XLineBreakpointType<?> resolveBreakpointType(@NotNull Project project, @NotNull VirtualFile virtualFile, int line)
+	public XLineBreakpointType<?> resolveBreakpointType(@Nonnull Project project, @Nonnull VirtualFile virtualFile, int line)
 	{
 		final Document document = FileDocumentManager.getInstance().getDocument(virtualFile);
 		if(document == null)

@@ -22,8 +22,8 @@ import org.intellij.lang.xpath.context.*;
 import org.intellij.lang.xpath.psi.XPathElement;
 import org.intellij.lang.xpath.xslt.context.XsltContextProvider;
 import org.intellij.plugins.xsltDebugger.rt.engine.Debugger;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import javax.xml.namespace.QName;
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class EvalContextProvider extends ContextProvider {
     myVariables = model;
   }
 
-  @NotNull
+  @Nonnull
   public ContextType getContextType() {
     return XsltContextProvider.TYPE;
   }
@@ -64,7 +64,7 @@ public class EvalContextProvider extends ContextProvider {
 
   public VariableContext getVariableContext() {
     return new SimpleVariableContext() {
-      @NotNull
+      @Nonnull
       public String[] getVariablesInScope(XPathElement element) {
         final int size = myVariables.size();
         final ArrayList<String> vars = new ArrayList<String>(size);

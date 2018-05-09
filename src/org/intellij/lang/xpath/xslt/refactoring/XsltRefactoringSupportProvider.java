@@ -21,7 +21,7 @@ import com.intellij.psi.PsiFile;
 import com.intellij.refactoring.RefactoringActionHandler;
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.refactoring.extractTemplate.XsltExtractTemplateAction;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * @author Dmitry Avdeev
@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 public class XsltRefactoringSupportProvider extends RefactoringSupportProvider {
 
   @Override
-  public boolean isAvailable(@NotNull PsiElement context) {
+  public boolean isAvailable(@Nonnull PsiElement context) {
     PsiFile containingFile = context.getContainingFile();
     return containingFile != null && XsltSupport.isXsltFile(containingFile);
   }

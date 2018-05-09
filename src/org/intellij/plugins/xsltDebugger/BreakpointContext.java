@@ -1,5 +1,7 @@
 package org.intellij.plugins.xsltDebugger;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInsight.intention.IntentionAction;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
@@ -14,8 +16,8 @@ import org.intellij.lang.xpath.psi.XPathVariableReference;
 import org.intellij.lang.xpath.validation.inspections.quickfix.XPathQuickFixFactory;
 import org.intellij.lang.xpath.xslt.context.XsltContextProvider;
 import org.intellij.lang.xpath.xslt.context.XsltVariableContext;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 public class BreakpointContext extends XsltContextProvider {
   public BreakpointContext(PsiElement contextElement) {
@@ -23,7 +25,7 @@ public class BreakpointContext extends XsltContextProvider {
   }
 
   @Override
-  @NotNull
+  @Nonnull
   public XPathQuickFixFactory getQuickFixFactory() {
     return XPathQuickFixFactoryImpl.INSTANCE;
   }
@@ -34,7 +36,7 @@ public class BreakpointContext extends XsltContextProvider {
   }
 
   @Override
-  @NotNull
+  @Nonnull
   public VariableContext getVariableContext() {
     return new XsltVariableContext() {
       @Override
@@ -44,7 +46,7 @@ public class BreakpointContext extends XsltContextProvider {
       }
 
       @Override
-      @NotNull
+      @Nonnull
       public IntentionAction[] getUnresolvedVariableFixes(XPathVariableReference reference) {
         return IntentionAction.EMPTY_ARRAY;
       }

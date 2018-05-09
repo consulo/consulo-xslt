@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.xpath.xslt.validation.inspections;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInspection.SuppressIntentionAction;
 import com.intellij.lang.xml.XMLLanguage;
 import com.intellij.openapi.editor.Editor;
@@ -31,8 +33,8 @@ import com.intellij.psi.xml.XmlTag;
 import com.intellij.psi.xml.XmlText;
 import com.intellij.util.IncorrectOperationException;
 import com.intellij.xml.util.XmlUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 abstract class SuppressInspectionAction extends SuppressIntentionAction {
   private final String myToolId;
@@ -43,24 +45,24 @@ abstract class SuppressInspectionAction extends SuppressIntentionAction {
     myMsg = msg;
   }
 
-  @NotNull
+  @Nonnull
   public String getText() {
     return myMsg;
   }
 
-  @NotNull
+  @Nonnull
   public String getFamilyName() {
     return "Suppress Inspection";
   }
 
   @Nullable
-  protected abstract XmlTag getAnchor(@NotNull PsiElement element);
+  protected abstract XmlTag getAnchor(@Nonnull PsiElement element);
 
-  public boolean isAvailable(@NotNull Project project, Editor editor, @NotNull PsiElement element) {
+  public boolean isAvailable(@Nonnull Project project, Editor editor, @Nonnull PsiElement element) {
     return getAnchor(element) != null;
   }
 
-  public void invoke(@NotNull Project project, Editor editor, @NotNull PsiElement element) throws IncorrectOperationException {
+  public void invoke(@Nonnull Project project, Editor editor, @Nonnull PsiElement element) throws IncorrectOperationException {
     final XmlTag anchor = getAnchor(element);
     if (anchor == null) return;
 
@@ -102,7 +104,7 @@ abstract class SuppressInspectionAction extends SuppressIntentionAction {
     }
   }
 
-  @NotNull
+  @Nonnull
   private static XmlComment createComment(Project project, String s) throws IncorrectOperationException {
     final XmlTag element = XmlElementFactory.getInstance(project).createTagFromText("<foo><!-- " + s + " --></foo>", XMLLanguage.INSTANCE);
     final XmlComment newComment = PsiTreeUtil.getChildOfType(element, XmlComment.class);

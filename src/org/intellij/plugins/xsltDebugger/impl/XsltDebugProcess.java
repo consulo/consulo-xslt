@@ -22,8 +22,8 @@ import org.intellij.plugins.xsltDebugger.VMPausedException;
 import org.intellij.plugins.xsltDebugger.XsltBreakpointType;
 import org.intellij.plugins.xsltDebugger.XsltDebuggerSession;
 import org.intellij.plugins.xsltDebugger.rt.engine.*;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.List;
 
@@ -100,7 +100,7 @@ public class XsltDebugProcess extends XDebugProcess implements Disposable {
     return handler.getUserData(KEY);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public ExecutionConsole createConsole() {
     return myExecutionConsole;
@@ -111,7 +111,7 @@ public class XsltDebugProcess extends XDebugProcess implements Disposable {
     return myProcessHandler;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public XDebuggerEditorsProvider getEditorsProvider() {
     return myEditorsProvider;
@@ -161,7 +161,7 @@ public class XsltDebugProcess extends XDebugProcess implements Disposable {
   }
 
   @Override
-  public void runToPosition(@NotNull XSourcePosition position) {
+  public void runToPosition(@Nonnull XSourcePosition position) {
     final PsiFile psiFile = PsiManager.getInstance(getSession().getProject()).findFile(position.getFile());
     assert psiFile != null;
     if (myDebuggerSession.canRunTo(position)) {

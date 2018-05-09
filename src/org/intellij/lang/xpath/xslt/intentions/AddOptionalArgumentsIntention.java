@@ -26,7 +26,7 @@ import com.intellij.psi.xml.XmlTag;
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.psi.*;
 import org.intellij.lang.xpath.xslt.quickfix.AddWithParamFix;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -34,17 +34,17 @@ import java.util.Set;
 // Just a clever trick that makes use of the already existing quickfix and the completion for missing arguments.
 public class AddOptionalArgumentsIntention extends AddWithParamFix {
 
-    @NotNull
+    @Nonnull
     public String getFamilyName() {
         return "Add optional Argument(s)";
     }
 
-    @NotNull
+    @Nonnull
     public String getText() {
         return getFamilyName();
     }
 
-    public boolean isAvailableImpl(@NotNull Project project, Editor editor, PsiFile file) {
+    public boolean isAvailableImpl(@Nonnull Project project, Editor editor, PsiFile file) {
         if (!XsltSupport.isXsltFile(file)) return false;
 
         final int offset = editor.getCaretModel().getOffset();

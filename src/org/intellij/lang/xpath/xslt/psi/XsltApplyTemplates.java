@@ -9,7 +9,7 @@ package org.intellij.lang.xpath.xslt.psi;
 
 import org.intellij.lang.xpath.psi.XPathExpression;
 
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 import javax.xml.namespace.QName;
 

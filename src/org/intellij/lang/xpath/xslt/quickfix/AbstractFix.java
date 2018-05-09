@@ -17,8 +17,8 @@ package org.intellij.lang.xpath.xslt.quickfix;
 
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.codeInsight.FileModificationService;
 import com.intellij.codeInsight.intention.IntentionAction;
 import com.intellij.codeInsight.template.TemplateBuilderImpl;
@@ -42,7 +42,7 @@ import com.intellij.util.LocalTimeCounter;
 import com.intellij.util.containers.ContainerUtil;
 
 public abstract class AbstractFix implements IntentionAction {
-  @NotNull
+  @Nonnull
   public String getFamilyName() {
     final String name = getClass().getSimpleName();
     return "XSLT " + name.replaceAll("Fix$", "").replaceAll("(\\p{Lower}+)(\\p{Upper})", "$1 $2");
@@ -66,13 +66,13 @@ public abstract class AbstractFix implements IntentionAction {
     return new TemplateBuilderImpl(psiFile);
   }
 
-  public final boolean isAvailable(@NotNull Project project, Editor editor, PsiFile file) {
+  public final boolean isAvailable(@Nonnull Project project, Editor editor, PsiFile file) {
     if (requiresEditor() && editor == null) return false;
 
     return isAvailableImpl(project, editor, file);
   }
 
-  protected abstract boolean isAvailableImpl(@NotNull Project project, @Nullable Editor editor, PsiFile file);
+  protected abstract boolean isAvailableImpl(@Nonnull Project project, @Nullable Editor editor, PsiFile file);
 
   protected abstract boolean requiresEditor();
 
@@ -82,17 +82,17 @@ public abstract class AbstractFix implements IntentionAction {
     if (requiresEditor && !isOnTheFly) return null;
 
     return new LocalQuickFix() {
-      @NotNull
+      @Nonnull
       public String getName() {
         return AbstractFix.this.getText();
       }
 
-      @NotNull
+      @Nonnull
       public String getFamilyName() {
         return AbstractFix.this.getFamilyName();
       }
 
-      public void applyFix(@NotNull Project project, @NotNull ProblemDescriptor descriptor) {
+      public void applyFix(@Nonnull Project project, @Nonnull ProblemDescriptor descriptor) {
         Editor editor;
         if (requiresEditor) {
           final DataContext dataContext = DataManager.getInstance().getDataContext();

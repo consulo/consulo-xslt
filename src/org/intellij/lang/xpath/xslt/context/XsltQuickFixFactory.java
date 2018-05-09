@@ -32,7 +32,7 @@ import org.intellij.lang.xpath.validation.inspections.quickfix.RemoveRedundantCo
 import org.intellij.lang.xpath.validation.inspections.quickfix.XPathQuickFixFactory;
 import org.intellij.lang.xpath.xslt.associations.impl.FileAssociationsConfigurable;
 import org.intellij.lang.xpath.xslt.validation.inspections.InspectionUtil;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.List;
 
@@ -89,12 +89,12 @@ public class XsltQuickFixFactory implements XPathQuickFixFactory {
       FileAssociationsConfigurable.editAssociations(project, PsiTreeUtil.getContextOfType(file, XmlFile.class, false));
     }
 
-    @NotNull
+    @Nonnull
     public String getText() {
       return "Edit File Associations";
     }
 
-    @NotNull
+    @Nonnull
     public String getFamilyName() {
       return "Edit File Associations";
     }

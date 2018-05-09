@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.xpath.xslt.quickfix;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.ide.DataManager;
 import com.intellij.lang.findUsages.LanguageFindUsages;
 import com.intellij.openapi.application.ApplicationManager;
@@ -28,7 +30,6 @@ import com.intellij.refactoring.RefactoringActionHandlerFactory;
 import com.intellij.util.IncorrectOperationException;
 import org.intellij.lang.xpath.xslt.psi.XsltElement;
 import org.intellij.lang.xpath.xslt.psi.XsltElementFactory;
-import org.jetbrains.annotations.NotNull;
 
 public class RenameVariableFix extends AbstractFix {
     private final XsltElement myElement;
@@ -39,17 +40,17 @@ public class RenameVariableFix extends AbstractFix {
         myPlace = place;
     }
 
-    @NotNull
+    @Nonnull
     public String getText() {
         final String type = LanguageFindUsages.INSTANCE.forLanguage(myElement.getLanguage()).getType(myElement);
         return "Rename " + myPlace + " " + StringUtil.capitalize(type);
     }
 
-    public boolean isAvailableImpl(@NotNull Project project, Editor editor, PsiFile file) {
+    public boolean isAvailableImpl(@Nonnull Project project, Editor editor, PsiFile file) {
         return myElement.isValid();
     }
 
-  public void invoke(@NotNull final Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
+  public void invoke(@Nonnull final Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
     Runnable runnable = new Runnable() {
       public void run() {
         RefactoringActionHandlerFactory.getInstance().createRenameHandler().invoke(project, new PsiElement[]{myElement},

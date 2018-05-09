@@ -15,12 +15,13 @@
  */
 package org.intellij.lang.xpath.xslt.quickfix;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.xml.XmlTag;
 import com.intellij.util.IncorrectOperationException;
-import org.jetbrains.annotations.NotNull;
 
 public class RemoveParamFix extends AbstractFix {
     private final XmlTag myTag;
@@ -31,16 +32,16 @@ public class RemoveParamFix extends AbstractFix {
         myTag = tag;
     }
 
-    @NotNull
+    @Nonnull
     public String getText() {
         return "Remove Argument '" + myName + "'";
     }
 
-    public void invoke(@NotNull Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
+    public void invoke(@Nonnull Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
         myTag.delete();
     }
 
-    public boolean isAvailableImpl(@NotNull Project project, Editor editor, PsiFile file) {
+    public boolean isAvailableImpl(@Nonnull Project project, Editor editor, PsiFile file) {
         return myTag.isValid();
     }
 

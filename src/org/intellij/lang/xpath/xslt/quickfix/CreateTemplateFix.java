@@ -15,9 +15,10 @@
  */
 package org.intellij.lang.xpath.xslt.quickfix;
 
+import javax.annotation.Nonnull;
+
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.util.XsltCodeInsightUtil;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.codeInsight.CodeInsightUtilCore;
 import com.intellij.codeInspection.LocalQuickFix;
 import com.intellij.codeInspection.ProblemDescriptor;
@@ -40,14 +41,14 @@ public class CreateTemplateFix implements LocalQuickFix
 		myName = name;
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public String getName()
 	{
 		return "Create Template '" + myName + "'";
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public String getFamilyName()
 	{
@@ -55,7 +56,7 @@ public class CreateTemplateFix implements LocalQuickFix
 	}
 
 	@Override
-	public void applyFix(@NotNull Project project, @NotNull ProblemDescriptor descriptor)
+	public void applyFix(@Nonnull Project project, @Nonnull ProblemDescriptor descriptor)
 	{
 		final XmlTag tag = XsltCodeInsightUtil.getTemplateTag(myTag, false);
 		if(tag == null)

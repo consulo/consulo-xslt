@@ -1,10 +1,11 @@
 package org.intellij.plugins.xsltDebugger;
 
+import javax.annotation.Nonnull;
+
 import org.intellij.lang.xpath.xslt.run.XsltCommandLineState;
 import org.intellij.lang.xpath.xslt.run.XsltRunConfiguration;
 import org.intellij.plugins.xsltDebugger.impl.XsltDebugProcess;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import consulo.annotations.RequiredDispatchThread;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.ExecutionResult;
@@ -33,7 +34,7 @@ public class XsltDebuggerRunner extends DefaultProgramRunner
 	private static final String ID = "XsltDebuggerRunner";
 
 
-	@NotNull
+	@Nonnull
 	@Override
 	public String getRunnerId()
 	{
@@ -41,14 +42,14 @@ public class XsltDebuggerRunner extends DefaultProgramRunner
 	}
 
 	@Override
-	public boolean canRun(@NotNull String executorId, @NotNull RunProfile profile)
+	public boolean canRun(@Nonnull String executorId, @Nonnull RunProfile profile)
 	{
 		return executorId.equals("Debug") && profile instanceof XsltRunConfiguration;
 	}
 
 	@Override
 	@RequiredDispatchThread
-	protected RunContentDescriptor doExecute(@NotNull RunProfileState state, @NotNull ExecutionEnvironment env) throws ExecutionException
+	protected RunContentDescriptor doExecute(@Nonnull RunProfileState state, @Nonnull ExecutionEnvironment env) throws ExecutionException
 	{
 		FileDocumentManager.getInstance().saveAllDocuments();
 		return createContentDescriptor(state, env);
@@ -60,8 +61,8 @@ public class XsltDebuggerRunner extends DefaultProgramRunner
 		final XDebugSession debugSession = XDebuggerManager.getInstance(project).startSession(executionEnvironment, new XDebugProcessStarter()
 		{
 			@Override
-			@NotNull
-			public XDebugProcess start(@NotNull final XDebugSession session) throws ExecutionException
+			@Nonnull
+			public XDebugProcess start(@Nonnull final XDebugSession session) throws ExecutionException
 			{
 				ACTIVE.set(Boolean.TRUE);
 				try

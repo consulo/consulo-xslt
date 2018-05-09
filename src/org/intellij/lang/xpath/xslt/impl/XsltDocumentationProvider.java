@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.annotation.Nonnull;
 import javax.xml.transform.Templates;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
@@ -44,8 +45,8 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.transform.JDOMSource;
 import org.jdom.xpath.XPath;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import com.intellij.lang.documentation.DocumentationProvider;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.text.StringUtil;
@@ -256,7 +257,7 @@ public class XsltDocumentationProvider implements DocumentationProvider {
             return myCategory;
         }
 
-        public PsiElement setName(@NotNull @NonNls String name) throws IncorrectOperationException {
+        public PsiElement setName(@Nonnull @NonNls String name) throws IncorrectOperationException {
             throw new IncorrectOperationException("Unsupported");
         }
 

@@ -24,7 +24,7 @@ import com.intellij.psi.xml.*;
 import com.intellij.xml.util.XmlUtil;
 import org.intellij.lang.xpath.xslt.util.XsltCodeInsightUtil;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,26 +100,26 @@ public class InspectionUtil {
     final List<SuppressIntentionAction> actions = new ArrayList<SuppressIntentionAction>(4);
 
     actions.add(new SuppressInspectionAction(inspection.getID(), "Suppress for Instruction") {
-      protected XmlTag getAnchor(@NotNull PsiElement element) {
+      protected XmlTag getAnchor(@Nonnull PsiElement element) {
         return PsiTreeUtil.getContextOfType(element, XmlTag.class, isXPath);
       }
     });
 
     actions.add(new SuppressInspectionAction(inspection.getID(), "Suppress for Template") {
-      protected XmlTag getAnchor(@NotNull PsiElement element) {
+      protected XmlTag getAnchor(@Nonnull PsiElement element) {
         return XsltCodeInsightUtil.getTemplateTag(element, isXPath);
       }
     });
 
     actions.add(new SuppressInspectionAction(inspection.getID(), "Suppress for Stylesheet") {
-      protected XmlTag getAnchor(@NotNull PsiElement element) {
+      protected XmlTag getAnchor(@Nonnull PsiElement element) {
         final XmlDocument document = PsiTreeUtil.getContextOfType(element, XmlDocument.class, isXPath);
         return document != null ? document.getRootTag() : null;
       }
     });
 
     actions.add(new SuppressInspectionAction(ALL_ID, "Suppress all for Stylesheet") {
-      protected XmlTag getAnchor(@NotNull PsiElement element) {
+      protected XmlTag getAnchor(@Nonnull PsiElement element) {
         final XmlDocument document = PsiTreeUtil.getContextOfType(element, XmlDocument.class, isXPath);
         return document != null ? document.getRootTag() : null;
       }

@@ -23,7 +23,7 @@ import com.intellij.openapi.components.*;
 import com.intellij.openapi.options.*;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.*;
 
@@ -41,7 +41,7 @@ public class FileAssociationsConfigurable implements SearchableConfigurable, Non
         return "XSLT File Associations";
     }
 
-  @NotNull
+  @Nonnull
     public String getHelpTopic() {
         return "xslt.associations";
     }
@@ -108,7 +108,7 @@ public class FileAssociationsConfigurable implements SearchableConfigurable, Non
         }
     }
 
-    @NotNull
+    @Nonnull
     public String getId() {
         return getHelpTopic();
     }

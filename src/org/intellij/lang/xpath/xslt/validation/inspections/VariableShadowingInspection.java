@@ -29,7 +29,7 @@ import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.quickfix.AbstractFix;
 import org.intellij.lang.xpath.xslt.quickfix.RenameVariableFix;
 import org.intellij.lang.xpath.xslt.validation.DeclarationChecker;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /*
 * Created by IntelliJ IDEA.
@@ -38,23 +38,23 @@ import org.jetbrains.annotations.NotNull;
 */
 public class VariableShadowingInspection extends XsltInspection {
 
-  @NotNull
+  @Nonnull
   public String getDisplayName() {
     return "Variable Shadowing";
   }
 
-  @NotNull
+  @Nonnull
   public String getShortName() {
     return "XsltVariableShadowing";
   }
 
-  @NotNull
+  @Nonnull
   public HighlightDisplayLevel getDefaultLevel() {
     return HighlightDisplayLevel.WARNING;
   }
 
-  @NotNull
-  public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, final boolean isOnTheFly) {
+  @Nonnull
+  public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, final boolean isOnTheFly) {
     return new XmlElementVisitor() {
       @Override
       public void visitXmlTag(final XmlTag tag) {

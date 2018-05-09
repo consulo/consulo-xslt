@@ -19,8 +19,9 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.annotation.Nonnull;
+
 import org.intellij.lang.xpath.xslt.XsltSupport;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.codeInspection.LocalQuickFix;
 import com.intellij.codeInspection.ProblemDescriptor;
 import com.intellij.openapi.progress.ProgressIndicator;
@@ -41,13 +42,13 @@ public class DownloadResourceFix implements LocalQuickFix
 		myLocation = location;
 	}
 
-	@NotNull
+	@Nonnull
 	public String getName()
 	{
 		return "Download External Resource";
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public String getFamilyName()
 	{
@@ -55,7 +56,7 @@ public class DownloadResourceFix implements LocalQuickFix
 	}
 
 	@Override
-	public void applyFix(@NotNull final Project project, @NotNull ProblemDescriptor descriptor)
+	public void applyFix(@Nonnull final Project project, @Nonnull ProblemDescriptor descriptor)
 	{
 		boolean tryAgain = true;
 

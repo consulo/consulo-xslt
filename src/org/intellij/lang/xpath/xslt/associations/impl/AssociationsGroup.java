@@ -17,8 +17,8 @@ package org.intellij.lang.xpath.xslt.associations.impl;
 
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.associations.FileAssociationsManager;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -35,7 +35,7 @@ public class AssociationsGroup extends ActionGroup {
         getTemplatePresentation().setIcon(XsltIcons.Association);
     }
 
-    @NotNull
+    @Nonnull
     public AnAction[] getChildren(@Nullable AnActionEvent e) {
         if (!isEnabled(e)) return AnAction.EMPTY_ARRAY;
 

@@ -27,8 +27,8 @@ import org.intellij.lang.xpath.xslt.validation.inspections.TemplateInvocationIns
 import org.intellij.lang.xpath.xslt.validation.inspections.UnusedElementInspection;
 import org.intellij.lang.xpath.xslt.validation.inspections.VariableShadowingInspection;
 import org.intellij.lang.xpath.xslt.validation.inspections.XsltDeclarationInspection;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.codeInspection.LocalInspectionTool;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.project.Project;
@@ -63,12 +63,12 @@ public class XsltStuffProvider implements UsageGroupingRuleProvider {
       myUsageGroupingRules = new UsageGroupingRule[]{ new TemplateUsageGroupingRule() };
     }
 
-  @NotNull
+  @Nonnull
     public UsageGroupingRule[] getActiveRules(Project project) {
         return myUsageGroupingRules;
     }
 
-    @NotNull
+    @Nonnull
     public AnAction[] createGroupingActions(UsageView view) {
         return AnAction.EMPTY_ARRAY;
     }
@@ -76,7 +76,7 @@ public class XsltStuffProvider implements UsageGroupingRuleProvider {
     private static class TemplateUsageGroup implements UsageGroup {
         private final XsltTemplate myTemplate;
 
-        public TemplateUsageGroup(@NotNull XsltTemplate template) {
+        public TemplateUsageGroup(@Nonnull XsltTemplate template) {
             myTemplate = template;
         }
 
@@ -84,7 +84,7 @@ public class XsltStuffProvider implements UsageGroupingRuleProvider {
             return TargetAWT.to(IconDescriptorUpdaters.getIcon(myTemplate, 0));
         }
 
-        @NotNull
+        @Nonnull
         public String getText(UsageView view) {
             final StringBuilder sb = new StringBuilder();
 
@@ -147,7 +147,7 @@ public class XsltStuffProvider implements UsageGroupingRuleProvider {
 
     private static class TemplateUsageGroupingRule implements UsageGroupingRule {
         @Nullable
-        public UsageGroup groupUsage(@NotNull Usage usage) {
+        public UsageGroup groupUsage(@Nonnull Usage usage) {
             if (usage instanceof UsageInfo2UsageAdapter) {
                 final UsageInfo2UsageAdapter u = (UsageInfo2UsageAdapter)usage;
                 final UsageInfo usageInfo = u.getUsageInfo();

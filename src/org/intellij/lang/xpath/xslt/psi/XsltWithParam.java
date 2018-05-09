@@ -15,9 +15,9 @@
  */
 package org.intellij.lang.xpath.xslt.psi;
 
-import org.intellij.lang.xpath.psi.XPathExpression;
+import javax.annotation.Nullable;
 
-import org.jetbrains.annotations.Nullable;
+import org.intellij.lang.xpath.psi.XPathExpression;
 
 public interface XsltWithParam extends XsltElement, XsltNamedElement {
     @Nullable

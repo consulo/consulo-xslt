@@ -35,8 +35,8 @@ import org.intellij.plugins.xsltDebugger.rt.engine.Breakpoint;
 import org.intellij.plugins.xsltDebugger.rt.engine.BreakpointManager;
 import org.intellij.plugins.xsltDebugger.rt.engine.Debugger;
 import org.intellij.plugins.xsltDebugger.rt.engine.DebuggerStoppedException;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.net.MalformedURLException;
 import java.net.SocketException;
@@ -167,7 +167,7 @@ public class XsltDebuggerSession implements Disposable {
   }
 
   @Nullable
-  public static Editor openLocation(Project project, @NotNull String uri, int lineNumber) {
+  public static Editor openLocation(Project project, @Nonnull String uri, int lineNumber) {
     try {
       final VirtualFile file = VfsUtil.findFileByURL(new URI(uri).toURL());
       final OpenFileDescriptor descriptor = new OpenFileDescriptor(project, file, lineNumber, 0);
@@ -201,14 +201,14 @@ public class XsltDebuggerSession implements Disposable {
     detach(myProcess);
   }
 
-  @NotNull
-  public static XsltDebuggerSession create(Project project, @NotNull ProcessHandler process, Debugger client) {
+  @Nonnull
+  public static XsltDebuggerSession create(Project project, @Nonnull ProcessHandler process, Debugger client) {
     final XsltDebuggerSession session = new XsltDebuggerSession(project, process, client);
     process.putUserData(DEBUGGER_SESSION, session);
     return session;
   }
 
-  public static XsltDebuggerSession getInstance(@NotNull ProcessHandler process) {
+  public static XsltDebuggerSession getInstance(@Nonnull ProcessHandler process) {
     return process.getUserData(DEBUGGER_SESSION);
   }
 

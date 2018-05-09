@@ -20,9 +20,11 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.annotation.Nonnull;
+
 import org.intellij.lang.xpath.xslt.quickfix.DownloadResourceFix;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import com.intellij.codeInspection.LocalQuickFix;
 import com.intellij.codeInspection.LocalQuickFixProvider;
 import com.intellij.javaee.ExternalResourceManager;
@@ -97,7 +99,7 @@ class ExternalResourceReference implements PsiReference, LocalQuickFixProvider
 		return null;
 	}
 
-	@NotNull
+	@Nonnull
 	public String getCanonicalText()
 	{
 		return myAttribute.getValue();
@@ -111,7 +113,7 @@ class ExternalResourceReference implements PsiReference, LocalQuickFixProvider
 		return value;
 	}
 
-	public PsiElement bindToElement(@NotNull PsiElement element) throws IncorrectOperationException
+	public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException
 	{
 		throw new UnsupportedOperationException();
 	}
@@ -121,7 +123,7 @@ class ExternalResourceReference implements PsiReference, LocalQuickFixProvider
 		return element == resolve();
 	}
 
-	@NotNull
+	@Nonnull
 	public Object[] getVariants()
 	{
 		return myResourceManager.getResourceUrls(null, false);

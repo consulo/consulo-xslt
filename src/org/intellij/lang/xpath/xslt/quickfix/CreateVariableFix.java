@@ -32,8 +32,8 @@ import com.intellij.util.IncorrectOperationException;
 import org.intellij.lang.xpath.psi.XPathVariableReference;
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.util.XsltCodeInsightUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class CreateVariableFix extends AbstractFix {
     private final XPathVariableReference myReference;
@@ -42,12 +42,12 @@ public class CreateVariableFix extends AbstractFix {
         myReference = reference;
     }
 
-    @NotNull
+    @Nonnull
     public String getText() {
         return "Create Variable '" + myReference.getReferencedName() + "'";
     }
 
-    public void invoke(@NotNull final Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
+    public void invoke(@Nonnull final Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
         editor = editor instanceof EditorWindow ? ((EditorWindow)editor).getDelegate() : editor;
 
         XmlTag tag = PsiTreeUtil.getContextOfType(myReference, XmlTag.class, true);
@@ -85,7 +85,7 @@ public class CreateVariableFix extends AbstractFix {
         return XsltCodeInsightUtil.getUsageBlock(myReference);
     }
 
-    public boolean isAvailableImpl(@NotNull Project project, Editor editor, PsiFile file) {
+    public boolean isAvailableImpl(@Nonnull Project project, Editor editor, PsiFile file) {
         if (!myReference.isValid()) {
             return false;
         }

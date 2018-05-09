@@ -15,6 +15,8 @@
  */
 package org.intellij.lang.xpath.xslt.psi.impl;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.psi.search.LocalSearchScope;
 import com.intellij.psi.search.SearchScope;
 import com.intellij.psi.xml.XmlAttribute;
@@ -27,8 +29,8 @@ import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.psi.XsltVariable;
 import org.intellij.lang.xpath.xslt.util.QNameUtil;
 import org.intellij.lang.xpath.xslt.util.XsltCodeInsightUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 public class XsltVariableImpl extends XsltElementImpl implements XsltVariable {
 
@@ -36,7 +38,7 @@ public class XsltVariableImpl extends XsltElementImpl implements XsltVariable {
         super(target);
     }
 
-    @NotNull
+    @Nonnull
     public XPathType getType() {
         final XPathType declaredType = XsltCodeInsightUtil.getDeclaredType(getTag());
         if (declaredType != null) {
@@ -63,18 +65,18 @@ public class XsltVariableImpl extends XsltElementImpl implements XsltVariable {
         return XsltCodeInsightUtil.getXPathExpression(this, "select");
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public final SearchScope getUseScope() {
         return XsltSupport.isTopLevelElement(getTag()) ? getDefaultUseScope() : getLocalUseScope();
     }
 
-    @NotNull
+    @Nonnull
     protected SearchScope getLocalUseScope() {
         return new LocalSearchScope(getTag().getParentTag());
     }
 
-    @NotNull
+    @Nonnull
     protected SearchScope getDefaultUseScope() {
         return super.getUseScope();
     }
@@ -89,7 +91,7 @@ public class XsltVariableImpl extends XsltElementImpl implements XsltVariable {
         return name != null && "type:void".equals(QNameUtil.createQName(name, getTag()).getNamespaceURI());
     }
 
-  public void accept(@NotNull XPathElementVisitor visitor) {
+  public void accept(@Nonnull XPathElementVisitor visitor) {
     visitor.visitXPathVariable(this);
   }
 }

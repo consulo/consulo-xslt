@@ -24,8 +24,8 @@ import org.intellij.plugins.xsltDebugger.XsltBreakpointType;
 import org.intellij.plugins.xsltDebugger.rt.engine.Breakpoint;
 import org.intellij.plugins.xsltDebugger.rt.engine.BreakpointManager;
 import org.intellij.plugins.xsltDebugger.rt.engine.DebuggerStoppedException;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class XsltBreakpointHandler extends XBreakpointHandler<XLineBreakpoint<XBreakpointProperties>> {
   private XsltDebugProcess myXsltDebugProcess;
@@ -36,7 +36,7 @@ public class XsltBreakpointHandler extends XBreakpointHandler<XLineBreakpoint<XB
   }
 
   @Override
-  public void registerBreakpoint(@NotNull XLineBreakpoint<XBreakpointProperties> breakpoint) {
+  public void registerBreakpoint(@Nonnull XLineBreakpoint<XBreakpointProperties> breakpoint) {
     final XSourcePosition sourcePosition = breakpoint.getSourcePosition();
     if (sourcePosition == null || !sourcePosition.getFile().exists() || !sourcePosition.getFile().isValid()) {
       // ???
@@ -76,7 +76,7 @@ public class XsltBreakpointHandler extends XBreakpointHandler<XLineBreakpoint<XB
   }
 
   @Override
-  public void unregisterBreakpoint(@NotNull XLineBreakpoint<XBreakpointProperties> breakpoint, final boolean temporary) {
+  public void unregisterBreakpoint(@Nonnull XLineBreakpoint<XBreakpointProperties> breakpoint, final boolean temporary) {
     final XSourcePosition sourcePosition = breakpoint.getSourcePosition();
     if (sourcePosition == null || !sourcePosition.getFile().exists() || !sourcePosition.getFile().isValid()) {
       // ???

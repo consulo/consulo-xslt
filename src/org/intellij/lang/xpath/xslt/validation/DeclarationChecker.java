@@ -28,7 +28,7 @@ import org.intellij.lang.xpath.xslt.psi.impl.ResolveUtil;
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.impl.XsltChecker;
 import org.intellij.lang.xpath.xslt.util.ElementProcessor;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -60,7 +60,7 @@ public final class DeclarationChecker extends ElementProcessor<XmlTag> implement
   }
 
   @Override
-  public boolean execute(@NotNull PsiElement element) {
+  public boolean execute(@Nonnull PsiElement element) {
     if (element instanceof XmlTag) {
       return process((XmlTag)element);
     }

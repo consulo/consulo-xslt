@@ -1,5 +1,7 @@
 package org.intellij.lang.xpath.xslt.validation.inspections;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeHighlighting.HighlightDisplayLevel;
 import com.intellij.codeInspection.ProblemsHolder;
 import com.intellij.lang.LanguageNamesValidation;
@@ -19,7 +21,6 @@ import org.intellij.lang.xpath.xslt.psi.XsltElementFactory;
 import org.intellij.lang.xpath.xslt.psi.XsltNamedElement;
 import org.intellij.lang.xpath.xslt.psi.XsltTemplate;
 import org.intellij.lang.xpath.xslt.validation.DeclarationChecker;
-import org.jetbrains.annotations.NotNull;
 
 /*
 * Created by IntelliJ IDEA.
@@ -30,23 +31,23 @@ public class XsltDeclarationInspection extends XsltInspection {
     private XsltElementFactory myXsltElementFactory;
     private NamesValidator myNamesValidator;
 
-    @NotNull
+    @Nonnull
     public String getDisplayName() {
         return "Declaration Problems";
     }
 
-    @NotNull
+    @Nonnull
     public String getShortName() {
         return "XsltDeclarations";
     }
 
-    @NotNull
+    @Nonnull
     public HighlightDisplayLevel getDefaultLevel() {
         return HighlightDisplayLevel.ERROR;
     }
 
-    @NotNull
-    public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, final boolean isOnTheFly) {
+    @Nonnull
+    public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, final boolean isOnTheFly) {
         return new XmlElementVisitor() {
             @Override
             public void visitXmlTag(final XmlTag tag) {

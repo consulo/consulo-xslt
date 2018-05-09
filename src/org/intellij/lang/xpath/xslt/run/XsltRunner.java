@@ -15,10 +15,11 @@
  */
 package org.intellij.lang.xpath.xslt.run;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.execution.configurations.RunProfile;
 import com.intellij.execution.executors.DefaultRunExecutor;
 import com.intellij.execution.runners.DefaultProgramRunner;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * User: Maxim.Mossienko
@@ -26,12 +27,12 @@ import org.jetbrains.annotations.NotNull;
  * Time: 19:59:57
  */
 public class XsltRunner extends DefaultProgramRunner {
-  @NotNull
+  @Nonnull
   public String getRunnerId() {
     return "XsltProgramRunner";
   }
 
-  public boolean canRun(@NotNull final String executorId, @NotNull final RunProfile profile) {
+  public boolean canRun(@Nonnull final String executorId, @Nonnull final RunProfile profile) {
     return DefaultRunExecutor.EXECUTOR_ID.equals(executorId) && 
            profile instanceof XsltRunConfiguration &&
            !XsltRunSettingsEditor.ALLOW_CHOOSING_SDK; // default java runner will run us when we have Java & can choose sdk

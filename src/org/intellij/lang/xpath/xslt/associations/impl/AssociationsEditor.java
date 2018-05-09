@@ -24,8 +24,8 @@ import javax.swing.tree.TreePath;
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.associations.FileAssociationsManager;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.impl.AbstractProjectTreeStructure;
 import com.intellij.ide.projectView.impl.GroupByTypeComparator;
@@ -154,7 +154,7 @@ class AssociationsEditor {
     final Object element = myBuilder.getTreeStructure().getRootElement();
     myBuilder.batch(new Progressive() {
       @Override
-      public void run(@NotNull ProgressIndicator indicator) {
+      public void run(@Nonnull ProgressIndicator indicator) {
         myBuilder.expand(element, null);
         myBuilder.expand(myBuilder.getTreeStructure().getChildElements(element), null);
       }

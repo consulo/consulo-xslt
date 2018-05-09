@@ -35,8 +35,8 @@ import com.intellij.util.IncorrectOperationException;
 import org.intellij.lang.xpath.context.NamespaceContext;
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.impl.XsltChecker;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.*;
 
@@ -59,7 +59,7 @@ public class XsltNamespaceContext implements NamespaceContext {
         return tag != null ? tag.getPrefixByNamespace(uri) : null;
     }
 
-    @NotNull
+    @Nonnull
     public Collection<String> getKnownPrefixes(XmlElement context) {
         return getPrefixes(context);
     }
@@ -165,16 +165,16 @@ public class XsltNamespaceContext implements NamespaceContext {
             myXmlFile = xmlFile;
         }
 
-        public void invoke(@NotNull Project project, Editor editor, PsiFile psiFile) throws IncorrectOperationException {
+        public void invoke(@Nonnull Project project, Editor editor, PsiFile psiFile) throws IncorrectOperationException {
             super.invoke(project, editor, myXmlFile);
         }
 
         @Override
-        public boolean showHint(@NotNull Editor editor) {
+        public boolean showHint(@Nonnull Editor editor) {
             return false; // doesn't work properly yet
         }
 
-        public boolean isAvailable(@NotNull Project project, Editor editor, PsiFile psiFile) {
+        public boolean isAvailable(@Nonnull Project project, Editor editor, PsiFile psiFile) {
             return super.isAvailable(project, editor, myXmlFile);
         }
     }

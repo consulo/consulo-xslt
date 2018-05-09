@@ -28,8 +28,8 @@ import org.intellij.lang.xpath.xslt.XsltConfig;
 import org.jdom.Element;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.ide.projectView.ProjectView;
 import com.intellij.lang.Language;
 import com.intellij.lang.LanguageFormatting;
@@ -77,7 +77,7 @@ class XsltConfigImpl extends XsltConfig implements JDOMExternalizable, Applicati
     public void disposeComponent() {
     }
 
-    @NotNull
+    @Nonnull
     @NonNls
     public String getComponentName() {
         return "XSLT-Support.Configuration";
@@ -151,7 +151,7 @@ class XsltConfigImpl extends XsltConfig implements JDOMExternalizable, Applicati
             myShowLinkedFiles.setSelected(myConfig.SHOW_LINKED_FILES);
         }
 
-        @NotNull
+        @Nonnull
         public String getId() {
           return getHelpTopic();
         }

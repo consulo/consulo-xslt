@@ -2,8 +2,8 @@ package consulo.xslt.xpath.context;
 
 import org.intellij.lang.xpath.context.NamespaceContext;
 import org.intellij.lang.xpath.xslt.context.XsltNamespaceContext;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.psi.xml.XmlElement;
 import consulo.xpath.context.NamespaceContextProvider;
 
@@ -15,7 +15,7 @@ public class XsltNamespaceContextProvider implements NamespaceContextProvider
 {
 	@Nullable
 	@Override
-	public NamespaceContext getNamespaceContext(@NotNull XmlElement xmlElement)
+	public NamespaceContext getNamespaceContext(@Nonnull XmlElement xmlElement)
 	{
 		return XsltNamespaceContext.NAMESPACE_CONTEXT;
 	}

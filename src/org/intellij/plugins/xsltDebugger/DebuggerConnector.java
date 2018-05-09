@@ -25,11 +25,12 @@ import org.intellij.plugins.xsltDebugger.rt.engine.Debugger;
 import org.intellij.plugins.xsltDebugger.rt.engine.OutputEventQueue;
 import org.intellij.plugins.xsltDebugger.rt.engine.remote.RemoteDebuggerClient;
 import org.intellij.plugins.xsltDebugger.ui.StructureTabComponent;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.rmi.ConnectException;
 import java.rmi.NotBoundException;
+
+import javax.annotation.Nullable;
 
 /**
  * Establishes the debugger-connection to the started XSLT-process, starts the debugger-session
