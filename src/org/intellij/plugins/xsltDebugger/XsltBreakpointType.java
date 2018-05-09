@@ -1,7 +1,5 @@
 package org.intellij.plugins.xsltDebugger;
 
-import javax.swing.Icon;
-
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.impl.XsltChecker;
 import org.intellij.plugins.xsltDebugger.impl.XsltDebuggerEditorsProvider;
@@ -16,7 +14,7 @@ import com.intellij.xdebugger.breakpoints.XBreakpointProperties;
 import com.intellij.xdebugger.breakpoints.XLineBreakpoint;
 import com.intellij.xdebugger.breakpoints.XLineBreakpointType;
 import com.intellij.xdebugger.evaluation.XDebuggerEditorsProvider;
-import consulo.awt.TargetAWT;
+import consulo.ui.image.Image;
 
 /*
 * Created by IntelliJ IDEA.
@@ -69,16 +67,16 @@ public class XsltBreakpointType extends XLineBreakpointType<XBreakpointPropertie
 
 	@NotNull
 	@Override
-	public Icon getEnabledIcon()
+	public Image getEnabledIcon()
 	{
-		return TargetAWT.to(XsltSupport.createXsltIcon(AllIcons.Debugger.Db_set_breakpoint));
+		return XsltSupport.createXsltIcon(AllIcons.Debugger.Db_set_breakpoint);
 	}
 
 	@NotNull
 	@Override
-	public Icon getDisabledIcon()
+	public Image getDisabledIcon()
 	{
-		return TargetAWT.to(XsltSupport.createXsltIcon(AllIcons.Debugger.Db_disabled_breakpoint));
+		return XsltSupport.createXsltIcon(AllIcons.Debugger.Db_disabled_breakpoint);
 	}
 
 	@Override
