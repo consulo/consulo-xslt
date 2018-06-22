@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.jar.Attributes;
 import java.util.jar.Manifest;
 
+import javax.annotation.Nullable;
+
 import org.intellij.lang.xpath.xslt.XsltSupport;
 import org.intellij.lang.xpath.xslt.impl.XsltChecker;
 import org.intellij.lang.xpath.xslt.run.XsltRunConfiguration;
@@ -29,7 +31,6 @@ import org.intellij.lang.xpath.xslt.run.XsltRunnerExtension;
 import org.intellij.plugins.xsltDebugger.ui.OutputTabComponent;
 import org.intellij.plugins.xsltDebugger.ui.StructureTabComponent;
 import org.jetbrains.annotations.NonNls;
-import javax.annotation.Nullable;
 import com.intellij.diagnostic.logging.AdditionalTabComponent;
 import com.intellij.diagnostic.logging.LogConsoleManagerBase;
 import com.intellij.execution.CantRunException;
@@ -51,7 +52,6 @@ import com.intellij.openapi.util.Key;
 import com.intellij.openapi.util.UserDataHolder;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiManager;
-import com.intellij.util.PlatformIcons;
 import com.intellij.util.net.NetUtils;
 import consulo.vfs.util.ArchiveVfsUtil;
 
@@ -95,8 +95,7 @@ public class XsltDebuggerExtension extends XsltRunnerExtension
 		{
 			LogConsoleManagerBase logConsoleManager = ((RunTab) manager).getLogConsoleManager();
 			logConsoleManager.addAdditionalTabComponent(new OutputTabComponent(outputConsole), "XSLT-Output", AllIcons.Debugger.Console);
-			logConsoleManager.addAdditionalTabComponent(StructureTabComponent.create(process, outputConsole), "XSLT-Structure",
-					PlatformIcons.FLATTEN_PACKAGES_ICON);
+			logConsoleManager.addAdditionalTabComponent(StructureTabComponent.create(process, outputConsole), "XSLT-Structure", AllIcons.ObjectBrowser.FlattenPackages);
 		}
 		else
 		{
@@ -107,8 +106,7 @@ public class XsltDebuggerExtension extends XsltRunnerExtension
 	}
 
 	@Override
-	public void patchParameters(final SimpleJavaParameters parameters, XsltRunConfiguration configuration,
-			UserDataHolder extensionData) throws CantRunException
+	public void patchParameters(final SimpleJavaParameters parameters, XsltRunConfiguration configuration, UserDataHolder extensionData) throws CantRunException
 	{
 		final XsltRunConfiguration.OutputType outputType = configuration.getOutputType();
 
